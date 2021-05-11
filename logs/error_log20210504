@@ -1,0 +1,114 @@
+[Tue May 04 00:27:06 2021] [error] [client 167.114.211.237] ModSecurity: collections_remove_stale: Failed deleting collection (name "ip", key "113.166.91.119_905699f8e0308b3c9b0470873e1f9fe4df851d3c"): Internal error [hostname "rinplay.com"] [uri "/anuncios.php/index.php/privacidade.php/anuncios.php/sobre.php/ajuda.php/sobre.php/tutorial.php/anuncios.php/tutorial.php/privacidade.php/ajuda.php/index.php/ajuda.php/termos.php/ajuda.php/index.php/sobre.php/anuncios.php/tutorial.php/"] [unique_id "YJC-BrrKmXwAACCWb8EAAAAs"]
+[Tue May 04 00:27:58 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp-includes
+[Tue May 04 00:27:59 2021] [error] [client 137.117.21.159] ModSecurity: Access denied with code 403 (phase 2). Operator GT matched 0 at IP:flag_b. [file "/etc/modsecurity/locaweb-rules/activated_rules/Locaweb_98_wordpress.conf"] [line "60"] [id "690101"] [msg "WAF Rules : XMLRPC WordPress, 5 auth failures in 120 seconds - blocked for 10 minutes"] [hostname "rinplay.com"] [uri "/xmlrpc.php"] [unique_id "YJC-P7rKmXwAAN5b7DwAAAAp"]
+[Tue May 04 00:27:59 2021] [error] [client 137.117.21.159] (2)No such file or directory: cannot access type map file: /home/httpd/error/noindex.html.var
+[Tue May 04 00:28:00 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/blog
+[Tue May 04 00:28:01 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/web
+[Tue May 04 00:28:01 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wordpress
+[Tue May 04 00:28:02 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/website
+[Tue May 04 00:28:06 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp
+[Tue May 04 00:28:06 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/news
+[Tue May 04 00:28:07 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/2020
+[Tue May 04 00:28:07 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/2019
+[Tue May 04 00:28:08 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/shop
+[Tue May 04 00:28:08 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp1
+[Tue May 04 00:28:09 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/test/wp-includes
+[Tue May 04 00:28:10 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp2
+[Tue May 04 00:28:11 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/site
+[Tue May 04 00:28:11 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/cms
+[Tue May 04 00:28:12 2021] [error] [client 137.117.21.159] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/sito
+[Tue May 04 00:28:15 2021] [error] [client 137.117.21.159] ModSecurity: collections_remove_stale: Failed deleting collection (name "ip", key "178.128.51.162_1759fce451e56b4eb624eea72c06ca78e73f27d0"): Internal error [hostname "rinplay.com"] [uri "/error/HTTP_NOT_FOUND.html.var"] [unique_id "YJC-QrrKmXwAABs7GTMAAAAF"]
+[Tue May 04 00:54:00 2021] [error] [client 5.9.112.210] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 01:00:01 2021] [error] [client 144.76.60.198] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 01:00:43 2021] [error] [client 144.76.60.198] ModSecurity: collections_remove_stale: Failed deleting collection (name "ip", key "18.139.108.123_1759fce451e56b4eb624eea72c06ca78e73f27d0"): Internal error [hostname "rinplay.com"] [uri "/anuncios.php/index.php/privacidade.php/anuncios.php/sobre.php/ajuda.php/sobre.php/tutorial.php/anuncios.php/tutorial.php/privacidade.php/ajuda.php/ajuda.php/anuncios.php/termos.php/index.php/ajuda.php/termos.php/anuncios.php/index.php/"] [unique_id "YJDG5rrKmXwAAOfRUwAAAAAV"]
+[Tue May 04 02:45:53 2021] [error] [client 192.151.157.210] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 02:51:26 2021] [error] [client 192.151.157.210] ModSecurity: collections_remove_stale: Failed deleting collection (name "ip", key "138.201.62.173_1759fce451e56b4eb624eea72c06ca78e73f27d0"): Internal error [hostname "rinplay.com"] [uri "/anuncios.php/index.php/privacidade.php/anuncios.php/sobre.php/ajuda.php/sobre.php/tutorial.php/anuncios.php/tutorial.php/privacidade.php/ajuda.php/index.php/ajuda.php/anuncios.php/index.php/sobre.php/tutorial.php/ajuda.php/ajuda.php"] [unique_id "YJDg17rKmXwAAMnEwpYAAAAN"]
+[Tue May 04 03:27:07 2021] [error] [client 178.63.26.114] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 03:32:45 2021] [error] [client 178.63.26.114] ModSecurity: collections_remove_stale: Failed deleting collection (name "ip", key "35.233.103.80_1759fce451e56b4eb624eea72c06ca78e73f27d0"): Internal error [hostname "rinplay.com"] [uri "/anuncios.php/index.php/privacidade.php/anuncios.php/sobre.php/ajuda.php/sobre.php/tutorial.php/anuncios.php/tutorial.php/privacidade.php/ajuda.php/index.php/ajuda.php/ajuda.php/ajuda.php/index.php/ajuda.php/sobre.php/ajuda.php/ajuda.php/"] [unique_id "YJDqibrKmXwAAOvXg@UAAAAX"]
+[Tue May 04 03:37:39 2021] [error] [client 178.63.26.114] ModSecurity: collections_remove_stale: Failed deleting collection (name "ip", key "162.158.165.221_1759fce451e56b4eb624eea72c06ca78e73f27d0"): Internal error [hostname "rinplay.com"] [uri "/anuncios.php/index.php/privacidade.php/anuncios.php/sobre.php/ajuda.php/sobre.php/tutorial.php/anuncios.php/tutorial.php/privacidade.php/ajuda.php/index.php/ajuda.php/ajuda.php/sobre.php/tutorial.php/index.php/ajuda.php/sobre.php/"] [unique_id "YJDrrrrKmXwAAOK4fiMAAAAT"]
+[Tue May 04 04:04:53 2021] [error] [client 5.9.88.113] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 04:08:25 2021] [error] [client 5.9.88.113] ModSecurity: collections_remove_stale: Failed deleting collection (name "ip", key "172.70.38.199_1759fce451e56b4eb624eea72c06ca78e73f27d0"): Internal error [hostname "rinplay.com"] [uri "/anuncios.php/index.php/privacidade.php/anuncios.php/sobre.php/ajuda.php/sobre.php/tutorial.php/anuncios.php/tutorial.php/privacidade.php/ajuda.php/index.php/ajuda.php/anuncios.php/index.php/ajuda.php/index.php/ajuda.php/anuncios.php/"] [unique_id "YJDy4brKmXwAAFlz-@wAAAAP"]
+[Tue May 04 04:11:27 2021] [error] [client 5.9.88.113] ModSecurity: collections_remove_stale: Failed deleting collection (name "ip", key "173.249.38.81_1759fce451e56b4eb624eea72c06ca78e73f27d0"): Internal error [hostname "rinplay.com"] [uri "/anuncios.php/index.php/privacidade.php/anuncios.php/sobre.php/ajuda.php/sobre.php/tutorial.php/anuncios.php/tutorial.php/privacidade.php/ajuda.php/index.php/ajuda.php/anuncios.php/index.php/ajuda.php/privacidade.php/termos.php/sobre.php/"] [unique_id "YJDzlbrKmXwAAE@jV-oAAAAs"]
+[Tue May 04 04:15:07 2021] [error] [client 5.9.88.113] ModSecurity: collections_remove_stale: Failed deleting collection (name "ip", key "108.162.216.229_1759fce451e56b4eb624eea72c06ca78e73f27d0"): Internal error [hostname "rinplay.com"] [uri "/anuncios.php/index.php/privacidade.php/anuncios.php/sobre.php/ajuda.php/sobre.php/tutorial.php/anuncios.php/tutorial.php/privacidade.php/ajuda.php/index.php/ajuda.php/anuncios.php/index.php/anuncios.php/sobre.php/anuncios.php/termos.php/"] [unique_id "YJD0d7rKmXwAAKMidQgAAAAG"]
+[Tue May 04 04:17:00 2021] [error] [client 5.9.88.113] ModSecurity: collections_remove_stale: Failed deleting collection (name "ip", key "106.12.172.174_1759fce451e56b4eb624eea72c06ca78e73f27d0"): Internal error [hostname "rinplay.com"] [uri "/anuncios.php/index.php/privacidade.php/anuncios.php/sobre.php/ajuda.php/sobre.php/tutorial.php/anuncios.php/tutorial.php/privacidade.php/ajuda.php/index.php/ajuda.php/anuncios.php/index.php/index.php/privacidade.php/sobre.php/ajuda.php/"] [unique_id "YJD06LrKmXwAAKXRCAUAAAAf"]
+[Tue May 04 06:36:29 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp-includes
+[Tue May 04 06:36:29 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/xmlrpc.php
+[Tue May 04 06:36:30 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/blog
+[Tue May 04 06:36:30 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/web
+[Tue May 04 06:36:30 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wordpress
+[Tue May 04 06:36:30 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/website
+[Tue May 04 06:36:30 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp
+[Tue May 04 06:36:31 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/news
+[Tue May 04 06:36:31 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/2020
+[Tue May 04 06:36:31 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/2019
+[Tue May 04 06:36:31 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/shop
+[Tue May 04 06:36:32 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp1
+[Tue May 04 06:36:32 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/test/wp-includes
+[Tue May 04 06:36:32 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp2
+[Tue May 04 06:36:32 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/site
+[Tue May 04 06:36:33 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/cms
+[Tue May 04 06:36:33 2021] [error] [client 40.117.93.61] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/sito
+[Tue May 04 07:19:13 2021] [error] [client 114.119.142.42] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 07:37:10 2021] [error] [client 192.99.15.29] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 07:38:56 2021] [error] [client 100.21.218.158] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 07:38:56 2021] [error] [client 100.21.218.158] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/favicon.ico
+[Tue May 04 08:47:13 2021] [error] [client 17.121.112.160] (2)No such file or directory: cannot access type map file: /home/httpd/error/noindex.html.var
+[Tue May 04 08:47:14 2021] [error] [client 17.121.113.117] (2)No such file or directory: cannot access type map file: /home/httpd/error/noindex.html.var
+[Tue May 04 08:49:59 2021] [error] [client 13.233.73.212] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp-login.php
+[Tue May 04 08:50:00 2021] [error] [client 13.233.73.212] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wordpress
+[Tue May 04 08:50:01 2021] [error] [client 13.233.73.212] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/blog
+[Tue May 04 08:50:02 2021] [error] [client 13.233.73.212] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp
+[Tue May 04 08:58:36 2021] [error] [client 54.36.149.96] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 09:31:07 2021] [error] [client 114.119.141.76] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 09:59:07 2021] [error] [client 104.45.157.142] ModSecurity: Access denied with code 403 (phase 2). Operator GT matched 0 at IP:flag_b. [file "/etc/modsecurity/locaweb-rules/activated_rules/Locaweb_98_wordpress.conf"] [line "60"] [id "690101"] [msg "WAF Rules : XMLRPC WordPress, 5 auth failures in 120 seconds - blocked for 10 minutes"] [hostname "rinplay.com"] [uri "/xmlrpc.php"] [unique_id "YJFFG7rKmXwAAO8WvTcAAACK"]
+[Tue May 04 09:59:07 2021] [error] [client 104.45.157.142] (2)No such file or directory: cannot access type map file: /home/httpd/error/noindex.html.var
+[Tue May 04 09:59:07 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/blog
+[Tue May 04 09:59:08 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/web
+[Tue May 04 09:59:08 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wordpress
+[Tue May 04 09:59:08 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/website
+[Tue May 04 09:59:09 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp
+[Tue May 04 09:59:09 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/news
+[Tue May 04 09:59:09 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/2020
+[Tue May 04 09:59:12 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/2019
+[Tue May 04 09:59:13 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/shop
+[Tue May 04 09:59:16 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp1
+[Tue May 04 09:59:16 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/test/wp-includes
+[Tue May 04 09:59:17 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp2
+[Tue May 04 09:59:17 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/site
+[Tue May 04 09:59:17 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/cms
+[Tue May 04 09:59:18 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/sito
+[Tue May 04 10:02:57 2021] [error] [client 144.76.7.79] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 10:09:33 2021] [error] [client 66.249.83.83] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/favicon.ico
+[Tue May 04 10:09:33 2021] [error] [client 66.249.83.83] no acceptable variant: /home/httpd/error/HTTP_NOT_FOUND.html.var
+[Tue May 04 10:35:34 2021] [error] [client 148.251.8.250] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 12:18:09 2021] [error] [client 54.167.129.181] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 12:22:12 2021] [error] [client 18.237.151.233] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/favicon.ico
+[Tue May 04 14:28:41 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp-includes
+[Tue May 04 14:28:41 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/xmlrpc.php
+[Tue May 04 14:28:42 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/blog
+[Tue May 04 14:28:52 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/web
+[Tue May 04 14:28:52 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wordpress
+[Tue May 04 14:28:52 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/website
+[Tue May 04 14:28:52 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp
+[Tue May 04 14:28:53 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/news
+[Tue May 04 14:28:53 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/2020
+[Tue May 04 14:28:53 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/2019
+[Tue May 04 14:28:54 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/shop
+[Tue May 04 14:28:54 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp1
+[Tue May 04 14:28:54 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/test/wp-includes
+[Tue May 04 14:29:03 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp2
+[Tue May 04 14:29:04 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/site
+[Tue May 04 14:29:04 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/cms
+[Tue May 04 14:29:07 2021] [error] [client 104.45.157.142] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/sito
+[Tue May 04 19:32:43 2021] [error] [client 177.45.165.161] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/favicon.ico, referer: http://rinplay.com/
+[Tue May 04 21:36:16 2021] [error] [client 93.158.90.151] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Tue May 04 21:36:16 2021] [error] [client 93.158.90.136] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/humans.txt
+[Tue May 04 21:36:17 2021] [error] [client 93.158.90.164] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/ads.txt
+[Tue May 04 22:12:18 2021] [error] [client 151.80.40.72] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp-admin
+[Tue May 04 22:12:19 2021] [error] [client 151.80.40.72] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp-admin
+[Tue May 04 22:12:22 2021] [error] [client 151.80.40.72] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/general.php
+[Tue May 04 22:12:23 2021] [error] [client 151.80.40.72] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/mdocs-posts
+[Tue May 04 22:12:24 2021] [error] [client 151.80.40.72] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/wp-admin
+[Tue May 04 23:06:49 2021] [error] [client 66.249.64.91] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/robots.txt
+[Wed May 05 00:01:32 2021] [error] [client 66.249.83.83] File does not exist: /home/storage/4/36/1d/rinplaytemp1/public_html/favicon.ico
+[Wed May 05 00:01:32 2021] [error] [client 66.249.83.83] no acceptable variant: /home/httpd/error/HTTP_NOT_FOUND.html.var

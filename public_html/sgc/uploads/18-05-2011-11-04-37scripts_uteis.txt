@@ -1,0 +1,1 @@
+UPDATE tabela SET NomeCampo=REPLACE(NomeCampo,',','.')

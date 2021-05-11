@@ -1,0 +1,1835 @@
+Introduction to 
+xMP Service 
+Creation 
+
+Commercial in Confidence 
+
+
+Document History 
+
+Date Release Name Release Number 
+February 2010 XMP 5.1 1.0 
+Notice 
+
+© Copyright Vicorp UK Ltd 2006-7. All rights reserved. 
+
+Vicorp makes no warranty of any kind with regard to this material, whether express, 
+implied, statutory or otherwise, including but not limited to the implied warranties of 
+merchantability, non-infringement and fitness for a particular purpose. Vicorp does 
+not warrant that this material is suitable for the needs of any party. Vicorp shall not be 
+liable for errors contained herein or for any damages of any kind or nature 
+whatsoever, including but not limited to indirect, consequential, direct, special or 
+punitive damages arising out of or in connection with the with the furnishing, 
+performance or use of this material. 
+
+This is not a license. Vicorp assumes no responsibility for the use, reliability of its 
+software and makes no other warranties with respect to any of its software or other 
+materials not specified in a valid Vicorp software license. 
+
+This document and the material contained herein is proprietary to Vicorp and is 
+protected by copyright. All rights are reserved. No part of this documentation or 
+material may be photocopied, reproduced or translated without the prior written 
+consent of Vicorp. 
+
+Commercial in Confidence 
+
+
+Chapter 1 : Introduction .................................................................................... 
+4 
+About this guide ............................................................................................ 
+4 
+XMP Director................................................................................................. 
+4 
+XMP Studio ................................................................................................... 
+4 
+xMP Engine..................................................................................................
+. 
+xMP Reporter ................................................................................................ 
+5 
+
+
+Chapter 2 : Getting Started............................................................................... 
+6 
+Preliminaries ................................................................................................. 
+6 
+Creating a new project .................................................................................. 
+7 
+Creating the high-level call flow .................................................................... 
+8 
+Creating a diagram element using the palette .......................................... 
+8 
+Saving the project...................................................................................... 
+9 
+Creating Links.........................................................................................
+. 
+Connecting elements............................................................................... 10 
+Creating the high-level call flow............................................................... 11 
+Generating the service ................................................................................ 12 
+Preparing the service for generation – configuring bypass links............. 12 
+Generating the service ............................................................................ 13 
+
+
+Chapter 3 : Interacting with the caller – Using speech elements ................... 14 
+Introduction.................................................................................................. 14 
+Elaborating a diagram ................................................................................
+. 
+Opening a diagram .................................................................................. 15 
+Playing a message to the caller – using a play element............................. 16 
+Creating a play element........................................................................... 16 
+Configuring the Play element’s Prompt to play a message..................... 17 
+Organisation of Prompts and other configuration items within the project 
+................................................................................................................. 18 
+Testing the service ...................................................................................... 19 
+Including the contents of the diagram in the call flow.............................. 19 
+Generating the service ............................................................................ 19 
+Deploying the service to the application server......................................
+. 
+Assigning a trigger group to a service..................................................... 21 
+Calling the service ................................................................................... 21 
+Introducing xMP Content Management ...................................................... 22 
+About content items................................................................................. 22 
+Configuring a content item to play text-to-speech................................... 22 
+Configuring the fatalerrormessage prompt.............................................. 23 
+Creating more play and prompt elements................................................... 24 
+Redeploying and testing the service ..........................................................
+. 
+
+
+Collecting input from the caller – using a form element ..............................26 
+Creating a form element and elaborating the diagram ............................27 
+Creating a variable so that the form can store the caller’s input..............27 
+Creating the prompts played by the form.................................................28 
+Creating a collection grammar for the form .............................................29 
+Configuring the grammar.........................................................................29 
+Completing the Identify Caller step – configuring the confirmation prompt 
+
+
+.................................................................................................................30 
+
+
+Using a speech-recognition grammar .........................................................31 
+Modifying the IdentifyCaller diagram .......................................................31 
+Adding and configuring a custom grammar.............................................32 
+Modifying the confirmation prompt...........................................................33 
+
+
+Using Menus to create alternative flows......................................................34 
+Creating the menu element......................................................................34 
+Configuring the menu...............................................................................35 
+Completing the diagram...........................................................................35 
+Another menu ..........................................................................................36 
+
+
+Using an attribute to serve alternative content............................................37 
+Creating and configuring a variable with a list of allowed values ............38 
+Associating a content reference with an attribute....................................39 
+Specifying multiple alternative content items...........................................40 
+Setting the value of a service parameter.................................................40 
+Testing the service...................................................................................40 
+
+
+Selecting an attribute on the basis of the dialled number – provisioned 
+attributes ......................................................................................................41 
+
+Chapter 4 : Working with data – using process elements...............................42 
+Introduction ..................................................................................................42 
+Setting the value of a variable.....................................................................43 
+Creating and configuring a Set Variable element....................................43 
+Performing a calculation..............................................................................44 
+Putting a branch in the call flow – performing a comparison.......................46 
+Controlling a loop in the service logic – using increment and test ..............48 
+Chapter 5: The Next Steps..............................................................................49 
+Enhancing the service..............................................................................49 
+Using recorded prompts...........................................................................49 
+Using dynamic content.............................................................................49 
+Using xMPtasks......................................................................................49 
+
+
+Commercial in Confidence 
+
+
+Chapter 1 : Introduction 
+
+About this guide 
+
+This guide introduces xMP service creation. It takes you through the process of 
+
+creating a new service, adding functionality that enables it to: 
+
+interact with the caller 
+
+perform some simple processes using data. 
+
+The service we will create is a self-service application for a utility such as a gas or 
+electricity provider. It allows the callers to identify themselves, then plays them their 
+account balance and allows them to supply a meter reading. 
+
+For the purposes of this exercise, all the messages played to the caller will use text-tospeech. 
+The data in the customer’s account is simulated within the service. 
+
+This guide covers only a small subset of all the service creation and configuration 
+possibilities offered by the extensive functionality of xMP. If you would like to 
+explore some of the features of xMP that lie outside the scope of this guide, a good 
+place to start is the online help which you can access 
+
+XMP Director 
+
+xMP Director is an Eclipse-based graphical tool for constructing the call-flow logic of 
+xMP services. 
+
+Services created using xMP Director are stored in the file system, ready for 
+deployment to the Application Server by means of the Service Console. XMP services 
+are J2EE Enterprise Archive Files (.ear files) built on a de-facto Open Standards web 
+framework (STRUTS) and which run natively on any J2EE Application Server 
+without the need for run-time interpretation or proprietary data formats. xMP Director 
+partitions the service logic into a set of JSPs that dynamically generate VoiceXML 2.0 
+at run time. The partitioning is done in such a way as to minimise the number of 
+round trips between the VoiceXML interpreters and the Application Servers. 
+
+A key aspect of xMP Director is that it does not embed specific configuration 
+information into the services it creates. Rather, it captures the configuration needs of 
+the service as metadata. 
+
+XMP Studio 
+
+xMP Studio is an Eclipse-based tool used for the configuration of services produced 
+in xMP Director. xMP Studio examines the configuration requirements of the service 
+by processing the configuration XML file produced by xMP Director. 
+
+When the end user configures the service, for example by providing prompts through 
+the content management GUI, xMP Studio modifies the service archive accordingly, 
+in this case by creating a content archive section containing all supplied media files. 
+
+Commercial in Confidence 
+
+
+xMP Engine 
+
+The xMP Engine is the runtime Service Logic Execution Environment (SLEE) for 
+xMP services. It uses a standard J2EE platform. 
+The xMP Engine provides the framework, on top of the standard J2EE platform, that 
+provides the xMP-specific features. These xMP features include: 
+
+
+dynamic processing of content 
+session management 
+routing of calls to the platform 
+service management 
+handling of application events 
+alarm generation 
+Call Detail Record (CDR) generation 
+
+
+xMP Console 
+
+The xMP Console provides web-based management views onto the application server 
+
+platform. xMP Console is made up of two separate tools: 
+xMP Platform Console enables provisioning and management of platform 
+resources into individual partitions that can either be shared or dedicated to 
+different customers. 
+xMP Service Console enables customer (or tenant) self-management with a 
+point-and-click interface to control service deployment, resource management 
+and reporting of local or network hosted services. 
+
+J2EE Platforms 
+
+The J2EE platform manages the infrastructure, and supports the Web services, to 
+enable development of secure, robust and interoperable business applications and 
+services. xMP is compatible with any platform that complies with the J2EE 
+Specifications, and is supported on the following third-party J2EE platforms: 
+
+Oracle WebLogic Application Server 
+JBoss Application Server 
+IBM Websphere Application Server 
+
+
+Partitions 
+
+The J2EE platform can be split into a number of separate environments, each 
+allocated to a different Service Provider. These separate environments are known as 
+Virtual xMP Engines (VXE). 
+
+Each Service Provider is allocated their own VXE in which they can operate and 
+manage their own xMP Services. This allows complete independence between all the 
+Service Providers who share the same xMP Engine. Each VXE has its own dedicated 
+resources, such as service triggers (the dialled numbers or SIP addresses used to 
+access and initiate xMP services). 
+
+xMP Reporter 
+
+xMP Reporter is a comprehensive reporting package that delivers complete, 
+configurable analytical information on the usage of xMP services. xMP reporter 
+delivers a set of standard reports on many aspects of service behaviour. In addition, 
+the raw analytical data produced by xMP services is stored in a fully documented 
+database, allowing you to create reports with third-party tools to satisfy the precise 
+needs of your organisation. 
+
+Mine’s been gone for a while 
+
+Commercial in Confidence 
+
+
+Chapter 2 : Getting Started 
+
+Preliminaries 
+
+This guide takes you through all the steps of creating an xMP service. It starts from 
+creating a new xMP project and takes you through the stages of: 
+
+constructing the call-flow logic 
+
+configuring the messages that the service plays to the caller 
+
+configuring how the service recognises input from the caller 
+
+deploying the service for testing and use 
+
+We start from the point of creating a new xMP project. Information about installing 
+the xMP tools, about starting xMP and about licensing it for use can be found in the 
+xMP Tools Installation Manual. 
+
+
+Commercial in Confidence 
+
+
+Creating a new project 
+
+1. Select File>New>xMP Project. 
+The system displays the New xMP Project Wizard. 
+2. Enter the information for your project. 
+Give your project a name, such as Account_management 
+Use the default location to store your project 
+In the Project contents section of the wizard, select the Use default check box. 
+This creates your project in the current Eclipse workspace. 
+
+
+
+Commercial in Confidence 
+An Eclipse workspace is a directory structure that contains both entire projects 
+and pointers to projects that are stored elsewhere. The current workspace defines 
+the set of projects that you can see at any particular time in the xMP tools. It is 
+also the defaultlocation for any new projects that you create. 
+
+Add a description. 
+
+It’s always good practice to include comments and descriptions throughout your 
+project -it’s a great help in maintaining the project and in ensuring that all the 
+requirements for the service are addressed. Not only can you supply a description 
+for the project as a whole; you can add a description for every element within the 
+service. In the interests of brevity, this guide won’t remind you to supply a 
+description every time you create an element, but it’s a very good idea to get into 
+the habit of adding descriptions throughout your work. 
+
+3. Click Finish. 
+The system creates your project and opens its Main diagram. 
+
+To expand any window to use the full screen, double-click its tab. To return to 
+displaying multiple windows, double click the tab again. 
+
+
+Creating the high-level call flow 
+
+
+In all but the very smallest services it is best to divide the call flow into logical steps. 
+The logic for each step is defined in its own diagram. This has a number of benefits, 
+including: 
+
+
+The diagrams that you create are smaller and easier to work with. 
+It is possible to work on and test a particular part of the call flow rather 
+than always having to test the entire service. 
+
+
+Creating a diagram element using the palette 
+
+1. In the Palette, click on Diagram. 
+2. Click on the Main diagram canvas. 
+3. Type a name for the diagram (Greeting). 
+Alternatively, you can rename an element in the General tab of its properties view. 
+See Creating links on page 7 for an introduction to using the properties views. 
+
+A valid element name consists of alphanumeric characters and underscores, and must 
+
+not start with a digit. 
+
+
+Commercial in Confidence 
+
+
+Saving the project 
+
+It’s good practice to save your work frequently -as a suggestion, try to get into the 
+
+habit of saving the project at the end of each section of this guide. 
+
+1. Click the Save xMP Projects button in the toolbar , or select xMP>Save 
+Projects from the menu. 
+The system displays a dialog box which allows you to specify which project or 
+projects -xMP allows you to have multiple projects open at the same time – you 
+wish to save. 
+
+2. Make sure that your project is selected. 
+3. Click OK. 
+Commercial in Confidence 
+
+
+Creating Links 
+
+Outgoing 
+links 
+from 
+diagram 
+elements 
+fall 
+into 
+three 
+categories: 
+
+
+Many 
+elements, 
+such 
+as 
+Play, 
+always 
+have 
+the 
+same 
+number 
+of 
+outgoing 
+links. 
+When 
+
+
+you 
+create 
+the 
+element 
+and 
+include 
+it 
+in 
+a 
+diagram, 
+the 
+system 
+automatically 
+creates 
+
+
+the 
+links. 
+
+
+In 
+some 
+elements, 
+the 
+number 
+of 
+outgoing 
+links 
+depends 
+on 
+the 
+configuration 
+options 
+
+
+selected 
+for 
+the 
+element. 
+For 
+example, 
+the 
+number 
+of 
+outgoing 
+links 
+from 
+a 
+Compare 
+
+
+element 
+depends 
+on 
+the 
+type 
+of 
+comparison 
+being 
+performed. 
+The 
+system 
+names 
+these 
+
+
+links 
+automatically. 
+
+
+In 
+elements 
+such 
+as 
+Menu, 
+Application 
+Grammar 
+and 
+Diagram, 
+some 
+or 
+all 
+of 
+the 
+
+
+outgoing 
+links 
+are 
+user-defined. 
+You 
+add, 
+name 
+and 
+delete 
+links 
+in 
+the 
+configuration 
+
+
+page 
+for 
+the 
+element. 
+For 
+example, 
+as 
+we’ll 
+see 
+later, 
+the 
+options 
+in 
+a 
+Menu 
+correspond 
+
+
+to 
+the 
+outgoing 
+links 
+that 
+you 
+define 
+in 
+the 
+element's 
+configuration 
+page. 
+
+
+1. 
+Click on the Greeting diagram element in the xMP Navigator or in the 
+canvas. 
+The system displays the Element Properties view for the selected element. 
+
+2. 
+In the Element Properties view select the Diagram Properties tab. 
+The tabs are on the lower edge of the Element Properties view. The Diagram 
+Properties tab should be selected by default. 
+
+3. 
+Click the Add Link button. 
+4. 
+In the Link Label field type the name of the link. 
+In this instance, type the name greeting_ok. 
+
+The system displays the link that you have added to the Greeting element in the 
+canvas. Unconnected links are displayed in red. 
+
+Connecting elements 
+
+1. 
+Click on the outgoing link from the Start element. 
+Handles -small black squares that you can drag -are displayed on the selected 
+link. 
+
+2. 
+Drag the handle at the arrowhead to the Greeting element. 
+The link changes from red to black to show that it is connected. 
+If you wish, click and drag the handle in the middle of a line segment to make 
+a 
+corner. 
+To disconnect a link, select it and press the Delete key. 
+
+
+
+Commercial in Confidence 
+
+Creating the high-level call flow 
+
+Diagram element Links 
+
+name 
+
+IdentifyCaller 
+identify_ok (connects to MainMenu) 
+identify_error (connects to NonCompletion) 
+
+MainMenu 
+menu_balance (connects to BalanceEnquiry) 
+menu_reading (connects to MeterReading) 
+menu_error (connects to NonCompletion) 
+
+BalanceEnquiry balance_ok (connects to ReturnToMenu) 
+MeterReading reading_ok (connects to ReturnToMenu) 
+reading_error (connects to NonCompletion) 
+
+ReturnToMenu 
+return_yes (connects to MainMenu) 
+return_no ((connects to EndCall) 
+return_error (connects to NonCompletion) 
+
+NonCompletion noncompletion_ok (connects to EndCall) 
+EndCall end_ok (connects to Disconnect) 
+
+
+Notice how you can make links lie on top of each other in the diagram to keep it neat. 
+
+Commercial in Confidence 
+
+
+Generating the service 
+
+
+Even though we haven’t yet defined any of the actions that the service performs -so 
+
+far we’ve defined its high-level structure -we will generate the service at this stage 
+
+because the generation process performs extensive validation on the call flow logic. It 
+
+is therefore worthwhile to get into the habit of generating your service frequently. 
+
+Preparing the service for generation – configuring bypass links 
+
+
+When you deploy and test an incomplete service, you must specify the path that the 
+
+service logic follows for diagram elements that don’t have any logic defined within 
+
+them. It is also useful to be able to make the call flow bypass certain steps if you want 
+
+to test other sections of the call flow. 
+
+1. Open the Element Properties view for the Greeting diagram. 
+2. From the Bypass Link drop-down list select greeting_ok. 
+3. Similarly, configure the bypass links for all the diagrams in the service: 
+Diagram element Bypass Link Selection 
+
+Greeting greeting_ok 
+IdentifyCaller identify_ok 
+MainMenu menu_balance 
+BalanceEnquiry balance_ok 
+MeterReading reading_ok 
+ReturnToMenu return_no 
+NonCompletion noncompletion_ok 
+EndCall end_ok 
+
+<none> means that you wish the service to execute the call flow defined in the 
+
+diagram, and that you don’t want to bypass the diagram. 
+
+Commercial in Confidence 
+
+
+Generating the service 
+
+Click the Generate Service button in the toolbar (see the picture to the right), or 
+select Project>Generate Service from the menu. 
+
+The system displays a dialog box that shows the progress of the generation 
+process. 
+
+If the system encounters any errors in the call flow during validation, it shows a 
+list of error messages in the Error Log view (which is displayed in the same part of 
+the screen as the Element Properties views). The error messages should assist you 
+in finding the source of the problem. For example, if you see an error message that 
+reads 
+
+Found illegal terminating element ReturnToMenu_start 
+
+
+it probably means that you’ve set the bypass link for the ReturnToMenu diagram to 
+<none> instead of selecting the return_no link. 
+
+Commercial in Confidence 
+
+
+Chapter 3 : Interacting with 
+the caller – Using speech 
+elements 
+
+Introduction 
+
+In this chapter we’ll explore some of the ways in which xMP services interact with 
+
+the caller. These include: 
+
+playing prompts to the caller 
+
+collecting information from the caller 
+
+allowing the caller to select between options 
+
+We’ll also look at the way that the values of data within the service can be used to 
+select the content played to the caller at run-time. 
+
+Commercial in Confidence 
+
+
+Elaborating a diagram 
+
+Opening a diagram 
+
+Either: 
+
+in the Main diagram, double-click the Greeting diagram element 
+
+or 
+
+in the xMP Navigator, double-click the Greeting element 
+
+The system opens a view for the Greeting diagram, which contains one Diagram 
+Entry element and a Diagram Return element corresponding to each outgoing link 
+you have defined for the diagram – in this case there is one Diagram Return, which 
+corresponds to the greeting_ok link. 
+
+
+Commercial in Confidence 
+
+
+Playing a message to the caller – 
+using a play element 
+
+Creating a play element 
+
+1 Use the Palette to create a Play element called Intro in the Greeting canvas. 
+
+The Play element is in the Speech section of the Palette. 
+
+2 Connect the elements as shown in the illustration. 
+
+
+Commercial in Confidence 
+
+
+Configuring the Play element’s Prompt to play a message 
+
+One of the most important aspects of the xMP tools architecture is the separation of 
+callflow logic and content. This means that a callflow developer can concentrate on 
+the structure of the service and create a tested callflow. Subsequently, a configuration 
+manager can define the exact prompts (and other aspects of service presentation and 
+parameterisation) for a specific deployment. 
+This approach has a number of benefits: 
+· It is possible to produce re-usable, portable call flows 
+· The definition of service content does not require a knowledge of the 
+programming aspects of call-flow design 
+· The presentation of a service can be changed without modification to the call 
+flow 
+· Some aspects of presentation and parameterisation may not be known at the 
+time the callflow is being developed 
+To achieve this separation, an xMP Play element (or any other speech element) is not 
+configured directly with its content. Instead, it uses a configuration item, a Prompt, 
+which is accessible to the content manager. 
+
+1. 
+Click the Intro element in the xMP Navigator tree or on the canvas. 
+The system opens its Element Properties view. 
+2. 
+Open the Play Properties tab of the Play element’s properties view. 
+3. 
+Click the Edit button for the Prompt played by the element. 
+A Play element always plays a Prompt, so the check box that enables the Prompt is 
+
+greyed-out and cannot be selected. Later in this tutorial we will see elements in which 
+
+the prompts are optional: in these cases the check box is active. 
+
+The system displays the Prompt’s configuration view in the main workspace area. 
+
+4. 
+In the Prompt’s configuration view, select the Basic Configuration tab. 
+5. 
+In the Fallback TTS field, type Welcome to the account management service. 
+6. 
+Save the service. 
+This method of specifying content is intended to enable service developers to create a 
+
+
+deployable and testable service quickly. xMP provides a second, more powerful 
+
+mechanism for the specification of content, which we’ll look at in following sections 
+
+of thisguide. 
+
+Commercial in Confidence 
+
+
+Organisation of Prompts and other configuration items within the 
+project 
+
+Expand the Call Flow section of the xMP Navigator tree to show the contents of the 
+Main diagram. Notice that the Prompt created for the Intro element appears below the 
+element itself. 
+
+xMP stores every configuration item that is “owned” by a diagram element in this 
+
+way. The names of the configuration items are system-generated and are standardised 
+
+– for example, the Prompt used by a Play element is always called “Prompt”. The 
+configuration elements are distinguished by the pathname defined by the diagrams 
+
+and elements that contain them. 
+
+
+Commercial in Confidence 
+
+
+Testing the service 
+
+Including the contents of the diagram in the call flow 
+
+As we’ve seen, when you deploy and test an incomplete service, you must specify the 
+path that the service logic follows for diagram elements that don’t have any logic 
+defined within them. 
+Conversely, if you wish the call flow to include the logic defined inside a diagram, 
+you must configure the diagram to do this. 
+
+
+1. Open the Element Properties view for the Greeting diagram. 
+2. From the Bypass Link drop-down list select <none>. 
+3. Save the service. 
+Generating the service 
+
+As before, generate the service by clicking the Generate Service toolbar button or by 
+selecting Project>Generate Service. If the validation process raises any errors, 
+review the steps you’ve taken to create your service. 
+
+
+Commercial in Confidence 
+
+
+Deploying the service to the application server 
+
+1. 
+Open a Web browser. 
+2. 
+Connect to and log in to the xMP Service Console using the URL, username 
+and password that you have been given. 
+3. 
+Select the Upload Archive button then click the Browse button. 
+4. 
+In the Choose File window, browse for the .ear file (it should be in the 
+<workspace>\<project name>\Service Archive folder) and click Open. 
+The default location is 
+
+C:\Program Files\Vicorp\xMP5.x.x\workspace\AccountManagement\output 
+
+where 5.x.x represents the precise version of the xMP tools that you are using. 
+
+5. 
+In the xMP Service Console, click the Deploy button. 
+The service archive will take a few moments to deploy. 
+
+
+Commercial in Confidence 
+
+
+Assigning a trigger group to a service 
+
+Service triggers are the dialled numbers that initiate a call to a service. For ease of 
+
+management, service triggers can be organised into trigger groups. 
+
+For the purposes of this exercise we will associate all the available triggers -which 
+
+are initially contained in the Default trigger group -with the service. 
+
+1. Click the service to be bound to the Default trigger group. 
+2. Select the Triggering tab. 
+3. Click on the Bind button 
+4. Select the Default trigger group then click ok. 
+5. Click on the partition name in the tree at the left of the page. 
+Confirm that the service has a trigger group bound to it. Bound Groups should have 
+the value 1. 
+
+
+Calling the service 
+
+Dial one of the triggers in your trigger group. 
+When you are connected to the service, you should hear the following prompt: 
+
+
+Welcome to the account management service. 
+
+If you hear this prompt you have successfully created and deployed your first xMP 
+service! 
+
+Commercial in Confidence 
+
+
+Introducing xMP Content 
+Management 
+
+The method of providing text-to-speech content outlined earlier -using the TTS 
+
+Fallback field in the prompt’s Element Properties view -is intended to give service 
+
+developers a quick method of testing the call flow, but is generally not suitable for the 
+
+complex content configuration required in production-grade services. This tutorial 
+
+shows you how to use the more powerful functionality available through xMP 
+
+Content Management. 
+
+About content items 
+
+A prompt can be made up of a combination of four types of item: 
+· Internal audio item -this can contain an audio file (typically a .wav file) that 
+is embedded in the service archive. In this way services can be highly 
+portable: the service archive contains both the service logic and the content 
+that is played to the caller. 
+· External audio item -this can contain a pointer to an audio file stored on a 
+server that can be accessed from the xMP platform on which the service is 
+deployed 
+· Both internal and external audio items can also have text-to-speech defined 
+for them which is played if the audio file has not been defined or cannot be 
+played. 
+· The value contained in a variable 
+· Global prompt -this can itself contain a combination of items: it is intended 
+for situations in which similar prompts are used at different places within the 
+call flow 
+
+Configuring a content item to play text-to-speech 
+
+1. 
+Open the configuration view for the Prompt that is played by the Intro Play 
+element. 
+2. 
+In the Prompt’s configuration view, select the Advanced Configuration tab. 
+3. 
+Click the Add button to add a prompt slot. 
+4. 
+In the Transcript field type your TTS text. 
+5. Save your changes. 
+Commercial in Confidence 
+
+
+Configuring the fatalerrormessage prompt 
+
+The fatalerrormessage prompt is a system-generated prompt which allows you to 
+
+configure a message that the service plays if it encounters an error which causes it to 
+
+terminate. This is particularly important in production services, in which it is highly 
+
+undesirable to drop the call without any explanation to the caller. 
+
+1. 
+In the xMP Navigator, expand the Prompts folder under the main project 
+diagram. 
+2. 
+Double-click the fatalerrormessage prompt. 
+3. 
+Repeat the steps in the previous section to assign the following TTS string to 
+the fatalerrrormessage prompt: 
+Sorry, an error has occurred. The service must now close. 
+
+
+Commercial in Confidence 
+
+
+Creating more play and prompt 
+elements 
+
+1. 
+Elaborate the NonCompletion and EndCall diagrams. Add a play to each of 
+the diagrams, and configure them with prompts that play the following TTS 
+strings: 
+Diagram Play element names TTS string 
+
+NonCompletion NonCompletionMessage Sorry, the service cannot 
+Complete its actions. 
+EndCall Goodbye Goodbye, and thanks for 
+calling! 
+
+2. 
+Connect the elements in the diagrams. 
+3. 
+Change the Bypass Link settings for the NonCompletion and EndCall 
+diagrams to <none>. 
+The service will now use the call flow logic defined in these diagrams. 
+
+4. 
+Change the Bypass Link setting for the IdentifyCaller diagram to 
+identify_error. 
+This routes the call flow through the NonCompletion and EndCall diagrams so 
+that when you test the service you will hear the prompts that you have just added. 
+5. 
+Generate the service. 
+Commercial in Confidence 
+
+
+Redeploying and testing the service 
+
+1. 
+Open the xMP Service Console. 
+2. 
+Follow the steps on page 17 to browse for and deploy the .ear file for the 
+service again. 
+You do not have to re-assign the trigger group. Make sure the service is started. 
+
+3. Dial in to the service. 
+You should hear the three prompts: 
+Welcome to the account management service. 
+Sorry, the service cannot complete its actions. 
+Goodbye, and thanks for calling! 
+
+Commercial in Confidence 
+
+
+Collecting input from the caller – 
+using a form element 
+
+This section shows how to specify a form element to collect input from the user. The 
+process involves: 
+
+· creating the form element and linking it into the call flow 
+· defining the prompts used by the form 
+· creating a variable to collect the caller’s ASR or DTMF input 
+· configuring a built-in grammar to define the permissible input 
+This section also shows you how to include variable data in a prompt played to the 
+caller. 
+
+A form prompts the caller to provide input. The caller’s input is verified using a 
+speechrecognition or DTMF grammar and, if it is recognised by the grammar, the 
+input is used to set the value of a variable within the xMP service. 
+
+If the caller’s input does not match the grammar, or if the speech recognition engine 
+does not detect any input, the form can be configured to play appropriate messages to 
+the caller and allow them a configurable number of further attempts to supply valid 
+input. 
+
+In this section we elaborate the IdentifyCaller diagram so that it collects a four-digit 
+account number from the caller using DTMF. After the number has been collected, 
+the service plays it back to the caller. 
+
+Commercial in Confidence 
+
+
+Creating a form element and elaborating the diagram 
+
+1. 
+Open the IdentifyCaller diagram. 
+2. 
+Use the Palette to create a Form element called GetAccountNumber and 
+place it on the canvas. 
+A Form is a Speech element. 
+
+3. 
+Create a Play element called ConfirmLogin, and place it on the canvas. 
+4. 
+Link the elements as illustrated. 
+Creating a variable so that the form can store the caller’s input 
+
+1. 
+Open the properties view for the form element. 
+2. 
+In the Basic Collection Configuration section, use the <new…> option in the 
+Result Variable drop-down menu to create a Digits variable called 
+CustomerID. 
+In the Create Variable dialog select the variable type, Digits, from the drop-down list 
+in the Type field. 
+
+
+Commercial in Confidence 
+
+
+Creating the prompts played by the form 
+
+1. 
+In the properties view for the form element, make sure that the following 
+check boxes are selected -they should all be selected by default: 
+Section 
+Check box title 
+
+Basic Collection Initial Prompt 
+Configuration 
+Collection Event No Input -Play prompt on event 
+Configuration No Match-Play prompt on event 
+Treat Max Speech Timeout as No Match 
+Limit Total Events 
+
+2. Configure the prompts to play the messages shown below: 
+To access a prompt’s configuration view, click the Edit button for that prompt. 
+
+You can either specify the TTS in the Basic Configuration tab, or you can specify a 
+
+TTS transcript for content items in the Advanced Configuration tab (or both!) 
+
+Prompt name TTS 
+
+Initial Please type your four-digit user number. 
+
+
+No Input Sorry, I didn’t receive any input from you. 
+No Match Sorry, I didn’t understand your input. 
+
+Commercial in Confidence 
+
+
+Creating a collection grammar for the form 
+
+A grammar defines the input that the service can accept from the caller. Grammars 
+can define voice or DTMF input: in this case, we use a grammar that defines the 
+DTMF keys that the caller presses on their telephone keypad. 
+
+In the Basic Collection Configuration section, click the Edit button next to 
+Collection Grammar List. 
+
+The system displays the configuration view for the Form’s Collection Grammar. 
+
+As with Prompts, Grammars can be built up from multiple items of different types. 
+
+Configuring the grammar 
+
+In this instance, we use the media server’s built-in grammar for collecting a string of 
+digits. 
+
+1. 
+In the Collection Grammar’s configuration view, click the v symbol to the 
+right of the Add button. 
+2. 
+From the fly-out menu, select Add New> BuiltIn. 
+The system displays a dialog box. 
+
+3. 
+In the Name field, type AccountNumberGrammar. 
+4. 
+Click Add. 
+The system creates the Builtin grammar item. Click edit to display its properties view. 
+
+5. 
+In the Properties section: 
+• 
+Set Mode to dtmf 
+• 
+Set Type to digits 
+• 
+Set Min Length to 4 
+• 
+Set Max Length to 4 
+Open the Collection Grammar’s configuration view to check that the 
+AccountNumberGrammar has been added to the Slot Contents list. 
+
+
+Commercial in Confidence 
+
+Completing the Identify Caller step – configuring the confirmation 
+prompt 
+
+1. 
+Open the configuration view for the Prompt used by the ConfirmLogin Play 
+element. 
+2. 
+Open the Advanced Configuration tab. 
+3. 
+Select the Add button to add an internal content slot. 
+4. 
+In the Transcript field type Hello, customer number 
+5. Click Add>Variable. 
+You access the menu by clicking the v symbol to the right of the Add button. 
+The system adds a variable content item to the content slot. 
+6. 
+From the drop-down list in the Source column, select the CustomerID 
+variable. 
+7. 
+Set the Bypass Link on the IdentifyCaller diagram to <none>. 
+8. 
+Regenerate the project, redeploy and test the service. 
+Test the Noinput and Nomatch conditions as well as the case in which the number 
+is collected successfully. 
+
+
+The way the number is rendered in the confirmation prompt depends on the 
+
+configuration of the media server. 
+
+Commercial in Confidence 
+
+
+Using a speech-recognition 
+grammar 
+
+In the previous section we collected the caller’s input using DTMF and a variable’s 
+builtin grammar. In this section we’ll collect input using a custom speech-recognition 
+grammar. 
+
+Modifying the IdentifyCaller diagram 
+
+1. Create another form, called GetRegion, and connect it as illustrated. 
+To disconnect the GetAccountNumber element from the ok element, select the link 
+in the diagram canvas and press the Delete key. 
+
+2. Configure the form using a text variable called Region. 
+3. Configure the Initial prompt’s TTS to say Which region are you in? 
+4. Configure appropriate messages for the NoInput and NoMatch prompts. 
+Commercial in Confidence 
+
+
+Adding and configuring a custom grammar 
+
+1. 
+Click the Edit button for the form’s Collection Grammar. 
+2. 
+In the Collection Grammar’s configuration view, click the v symbol to the 
+right of the Add button. 
+3. 
+From the fly-out menu, select Add New> ItemList. 
+The system displays a dialog box. 
+
+4. 
+In the Name field, type RegionGrammar. 
+5. 
+Click Add. 
+The system creates the Item List grammar item and displays its properties view. 
+
+6. 
+In the Item List section, select the User Defined radio button. 
+7. 
+Use the Add Item button to add five items to the grammar. 
+8. 
+In each of the five Utterance fields type the name of a region: 
+• 
+northern 
+• 
+southern 
+• 
+eastern 
+• 
+western 
+• 
+central 
+You need to specify a Grammar Return Value only if the value to be stored in the 
+
+variable is different form the caller’s utterance. The use of return values is not 
+
+supported by some media servers. 
+
+
+Commercial in Confidence 
+
+
+Modifying the confirmation prompt 
+
+1. 
+Open the configuration view for the ConfirmLogin prompt content reference. 
+2. 
+Add further content items to the content reference so that it includes the 
+Region variable in the message that it plays to the caller. 
+A suggested message is 
+
+Hello, {Region} customer {CustomerID} 
+
+3. 
+Regenerate and test the service. 
+Commercial in Confidence 
+
+
+Using Menus to create alternative 
+flows 
+
+This section shows how to specify a menu element to allow the user to choose between 
+service options. The process involves: 
+
+• 
+creating the menu element, configuring the outgoing links that represent the 
+options, and linking it into the call flow 
+• 
+defining the prompts used by the menu 
+• 
+defining the grammars that identify the chosen option 
+At runtime the service follows an outgoing link from the menu element selected on the 
+basis of the caller’s input. 
+
+We’ll elaborate the MainMenu diagram so that it enables the caller to select one of 
+the options offered by the service. After the option has been selected, the service 
+confirms it to the caller. 
+
+The menu will accept both voice and DTMF input. 
+
+Creating the menu element 
+
+1. 
+Open the MainMenu diagram. 
+2. 
+Use the Palette to create a Menu element called CallerOptions and place it on 
+the canvas. 
+A Menu is a Speech element. 
+
+3. Create Play elements called BalanceSelected and ReadingSelected and 
+place them on the canvas. 
+Commercial in Confidence 
+
+
+Configuring the menu 
+
+1. 
+Open the menu’s configuration view. Select the Menu Properties tab. 
+2. 
+Edit the Initial prompt so that it plays the message To hear your account 
+balance, say “balance” or Press 1. To supply a meter reading, say “meter 
+reading” or press 2. 
+3. 
+Specify appropriate TTS messages for the NoInput and NoMatch prompts. 
+4. 
+Select the Menu Choices tab. 
+5. 
+Use the Add Choice button to add two menu choices. 
+6. 
+Name the two links balance and reading. Assign DTMF keys to each link. 
+7. 
+For each choice, set the Grammar Type to Text and specify the appropriate 
+keyword in the Grammar field. 
+Completing the diagram 
+
+Notice that the system has created outgoing links in the canvas that represent the 
+
+menu options. 
+
+1. 
+Link the elements as illustrated. 
+2. 
+Configure suitable TTS for the prompts played by the Play elements, so that 
+they confirm the caller’s selection. 
+3. 
+Set the Bypass Link on the diagram to <none>. 
+4. 
+Regenerate and test the service. 
+Remember to test all the possible options and the noinput and nomatch 
+conditions. 
+
+
+Commercial in Confidence 
+
+
+Another menu 
+
+Elaborate the ReturnToMenu diagram so that it contains a menu that asks the caller 
+if they want to perform another action. If they say “yes”, the service takes them back 
+to the main menu; if they say “no”, they’ll go to the EndCall diagram and from there 
+exit the service. 
+
+Remember to set the Bypass Link on the ReturnToMenu diagram to <none> before 
+you regenerate the service. 
+
+
+Commercial in Confidence 
+
+
+Using an attribute to serve 
+alternative content 
+
+In many instances, IVR services need to behave differently in different circumstances. 
+You may, for example, want to construct a service that can play different prompts 
+(and more besides, such as offering different menu options) depending on a caller’s 
+service level agreement, or one that can play prompts in different languages 
+depending on the caller’s location. 
+
+The ability to create alternative service behaviour is provided by xMP’s service 
+attributes. A service attribute is implemented as a variable, which is configured to 
+contain a list of permitted values. 
+
+To use a variable as a content attribute, you associate the variable with all the 
+Prompts that you wish it to control. Such a Prompt then has multiple content slots 
+one 
+for each permissible value that the variable can take. At run time the content slot 
+that corresponds to the current value of the variable is chosen and played to the 
+caller. You can set the value of a variable in several ways -for example, by using a 
+Set Variable element, by reading a preference from a database, by asking the caller in 
+a Form, or by setting it on the basis of the number that the caller dials. 
+
+In our case, we’ll adapt our generic account management service so that it can be 
+used by different utilities -Electricity and Gas providers -in different deployments. 
+We’ll configure the variable so that its value can be set when configuring the service 
+for deployment. 
+
+Commercial in Confidence 
+
+
+Creating and configuring a variable with a list of allowed values 
+
+1. In the xMP Navigator, right-click the Variables folder. 
+2. Select Add New>Text. 
+3. Create a Text variable called UtilityType. 
+The system displays the configuration view for the UtilityType variable 
+
+4. Select the parameter check box. 
+This means that the variable’s value can be set by somebody configuring the service 
+
+for deployment, who might not have access to the xMP Director call-flow building 
+
+tool. 
+
+5. In the Specific Properties section, select the Constrain Values check box. 
+This means that the variable’s value can only be one of the list of values that you 
+
+specify. 
+
+6. In the New Value field type Electricity and click Add. 
+This adds an entry to the list of values that the variable is allowed to take. 
+
+7. Similarly, add the value Gas. 
+8. Save the service. 
+Commercial in Confidence 
+
+
+Associating a content reference with an attribute 
+
+1. 
+In the xMP Navigator, right click on the variable and select Map to 
+Prompt/Grammar List slots 
+The system opens the Map Content Attribute to Prompt/Grammar list slots dialog 
+box. 
+
+2. 
+In the Content References list, select the Welcome prompt 
+(Prompt -account_management/account_management/Greeting/Intro/). 
+3. 
+From the Attribute value to copy to list, select None. 
+This field allows you to specify whether any existing content configured for the 
+Prompt should be preserved, and, if so, which attribute value(s) it should be 
+associated with. 
+
+4. 
+Click OK. 
+The system returns to the Map Content Attribute to Prompt/Grammar list slots 
+dialog box. 
+Note that the mapping that you have just created is shown. 
+
+
+5. 
+Click OK. 
+6. 
+Save the service. 
+Commercial in Confidence 
+
+
+Specifying multiple alternative content items 
+
+1. 
+Open the editor view for the Prompt used by the Intro element in the 
+Greeting diagram. 
+2. 
+Supply appropriate text for the two content slots corresponding to the two 
+possible attribute values. 
+Setting the value of a service parameter 
+
+This procedure shows you the method that might be used by a configuration manager 
+
+to configure the service for deployment. It shows another way to access the variable’s 
+
+configuration view. 
+
+1. 
+In the xMP Navigator, right-click on the Variables node. 
+2. 
+From the menu, select View Variables. 
+The system displays a list of all the variables defined in the project. 
+
+3. 
+Double-click the UtilityType variable. 
+The system displays the xMP Service Parameter Configuration dialog box. 
+
+4. 
+In the Initial Value field, select one of the list variable’s allowed values. 
+5. 
+Generate the service. 
+Testing the service 
+
+1. 
+Redeploy the service. 
+2. 
+Make a call in to the service. 
+You should hear the Intro prompt corresponding to the attribute value that you 
+selected above. 
+
+3. 
+Follow the procedure above to select the other value for the UtilityType 
+variable. 
+4. 
+Redeploy the service, and call it. 
+You should hear the other version of the Intro prompt. 
+
+
+Commercial in Confidence 
+
+
+Selecting an attribute on the basis 
+of the dialled number – provisioned 
+attributes 
+
+At run time, the value of a provisioned attribute is set on the basis of the number that 
+
+the caller uses to access the service (the DNIS). This allows a single deployed service 
+
+to behave differently for different callers. In our example we’ll use the attribute that 
+
+
+we’ve already defined to illustrate how a single service can be used for multiple 
+
+brands. 
+
+As before, triggers are managed as trigger groups. 
+
+In the evaluation environment you do not have multiple triggers, so to test this feature 
+
+associate the trigger group with one attribute value and dial the service, and then 
+
+associate the trigger with another value and dial in again to hear the changes. 
+
+Any list variable that is configured to be a service parameter can be used as a 
+
+provisioned attribute. 
+
+1. In the xMP Service Console, select the deployed service. 
+2. Select the Parameters tab 
+The system shows a list of the provisioned attributes for the service. In our case there 
+is just one: UtilityType. 
+
+3. In the Trigger Group Value list select Electricity. 
+4. Dial the service. 
+You should hear the Intro prompt for the Electricity utility. 
+
+5. In the Attribute Value list select Gas then dial the service. 
+You should hear the Intro prompt for the Gas utility. 
+
+Commercial in Confidence 
+
+
+Chapter 4 : Working with data 
+
+– using process elements. 
+Introduction 
+
+In this chapter we’ll look at some of the ways in which xMP allows you to work with 
+and manipulate data within the service. 
+
+In a real-world service, it’s likely that much of the data that a service works with is 
+retrieved from a database. Unfortunately, the Vicorp evaluation environment doesn’t 
+provide a suitable database, so we’ll have to simulate the data within the service 
+itself. However, this gives us the opportunity to explore some of the elements provided 
+by xMP that enable you to perform operations using the data in variables. 
+
+Commercial in Confidence 
+
+
+Setting the value of a variable 
+
+In this section we’ll store a value in an xMP variable. We’ll simulate the account 
+balance stored in the customer’s account records so that we can play it to them when 
+they request it. 
+
+Creating and configuring a Set Variable element. 
+
+1. 
+Open the BalanceEnquiry diagram. 
+2. 
+Create a Set Variable element called SetBalance. 
+A Set Variable is a Process element. 
+
+3. 
+Create a Play element called SayBalance. 
+4. 
+Link the elements as illustrated. 
+5. 
+Open the SetBalance element’s Element Properties view. 
+6. 
+Click the Add Assignment button. 
+A single Set Variable element can perform multiple assignments. You can use 
+
+multiple assignments to assign values to several different variables, or -because the 
+
+assignments are performed in order -you can use the same assignment variable in a 
+
+number of assignments in order to build up a complex data operation. However, in 
+
+this example we’ll use a single assignment. 
+
+7. Use the <new...> command in the the Assignment Variable drop-down list to 
+create a Currency variable called Balance. 
+The Assignment Variable is the variable whose value is being set. 
+
+8. 
+In the Assignment Value section, select the Constant radio button. 
+9. 
+In the Constant field type a suitable currency value. 
+10. 
+Configure the SayBalance element to play a prompt that tells the caller the 
+value of the Balance variable. 
+11. 
+Set the Bypass Link on the BalanceEnquiry diagram to <none>. 
+12. 
+Regenerate and test the service. 
+The way in which the currency value is rendered depends upon the configuration of 
+the media server. 
+
+Commercial in Confidence 
+
+
+Performing a calculation 
+
+In this section we’ll modify the action of the SetBalance element so that the service 
+gives a different balance for different customer account numbers. We’ll simulate this 
+by basing the account balance on the account number that we collect from the caller 
+in the IdentifyCaller diagram. 
+
+The calculation has two stages, so there will be two assignments in the SetBalance 
+element. The first converts the digits-type value that was collected from the caller into 
+a currency-type value, and stores this value in the Balance variable; the second 
+divides this number by a hundred to create a more realistic value for our simulation. 
+
+1. 
+In the xMP Navigator view, right click on the variables folder under the 
+project name and create a new digits variable called CustomerNumber. 
+2. 
+In the IdentifyCaller diagram, select the GetAccountNumber form and set 
+the Result Variable to CustomerNumber. 
+3. 
+Open up the BalanceEnquiry diagram. 
+4. 
+In the Element Properties view for the SetBalance element, select the 
+Operation radio button (instead of the Constant button that was selected 
+previously). 
+5. 
+In the Operation type list, select Digits. 
+The Operation list changes. It now displays a list of the operations that that result in a 
+
+value of the type that matches the Assignment Variable. In this case there’s only one 
+
+possibility, but some combinations of Assignment Variable type and Operation type 
+
+produce a longer list. You may wish to change the Assignment Variable and 
+
+Operation type selections to see the range of possible operations that you can perform 
+
+using a Set Variable element. 
+
+
+6. 
+In the Operation list select To Currency. 
+7. 
+In the First Argument section, select the Variable radio button. 
+8. 
+From the Variable drop-down list, select CustomerNumber. 
+Commercial in Confidence 
+
+
+9. 
+Click the Add Assignment button to add a second assignment to the 
+SetBalance element. 
+10. 
+Click the tab for the new assignment. 
+Until you specify an Assignment Variable for the new assignment, its tab is labelled 
+New Item: 1. 
+
+11. 
+From the Assignment Variable drop-down list, select the Balance variable. 
+12. 
+Select the Operation radio button. 
+13. 
+Specify that the Operation Type is Currency and the Operation is Divide. 
+14. 
+Specify that the First Argument is a Variable, and select Balance. 
+Note that in this example we’re taking the value of a variable, performing an 
+operation using that value, and storing the result in the same variable. 
+
+15. 
+Specify that the Second Argument is a Constant, and specify its value as 100. 
+16. 
+Regenerate and test the service, supplying a different account number each 
+time you call it. 
+Commercial in Confidence 
+
+
+Putting a branch in the call flow – 
+performing a comparison 
+
+In this section we’ll work on the part of the service that collects a meter reading from 
+the caller. Again, we’ll simulate a value that’s stored in the caller’s account records – 
+in this case, the last meter reading that was taken. We’ll check that the new value that 
+they supply is larger than the old value. If it isn’t, we’ll ask them to try again to 
+supply a valid reading. 
+
+1. 
+Open the MeterReading diagram. 
+2. 
+Create the following elements and place them on the canvas: 
+Element type Name 
+
+Set Variable SetOldReading 
+Form GetReading 
+Compare CompareReadings 
+Play TryAgain 
+
+3. 
+Follow the steps on page 40 to configure the SetOldReading element so that 
+it sets a number variable called OldReading to a suitable value, say, 1000. 
+4. 
+Configure the Initial prompt for the Form, asking the caller to supply their 
+meter reading. 
+5. 
+Configure the NoInput and NoMatch prompts for the Form. 
+6. 
+Configure the form to collect the reading and store it in a number variable 
+called CustomerReading. 
+Use a built-in DTMF and Voice grammar to collect the number value. 
+
+
+Commercial in Confidence 
+
+
+7. 
+Open the Element Properties view for the CompareReadings element. 
+8. 
+Specify that the Operation type is Number and the Operation is Compare 
+To. 
+9. 
+Specify that the First Argument is a Variable and select CustomerReading; 
+specify that the Second Argument is a Variable and select OldReading. 
+10. 
+Configure TTS for the Prompt plyed by the TryAgain element so that it 
+informs the caller that the reading they gave was lower than the previous 
+reading in the customer records, and asks them to try again. 
+11. 
+Connect the elements as shown. 
+12. 
+Set the Bypass Link on the MeterReading diagram to <none>. 
+13. 
+Regenerate and test the service. 
+Commercial in Confidence 
+
+
+Controlling a loop in the service 
+logic – using increment and test 
+
+In the previous section we introduced a loop into the call flow that allowed the caller 
+to have another attempt to supply a meter reading if their input was invalid. In this 
+section we will modify the call flow so that it limits the number of times the caller can 
+try to supply a valid number. 
+
+1. 
+In the MeterReading diagram, add the following elements and place them on 
+the canvas: 
+Element type 
+Name 
+
+Set Variable InitialiseCounter 
+Increment and Test TestRetries 
+
+It would be possible to create another assignment in the existing SetOldReading 
+
+element instead of creating a new SetVariable, but we’ll choose to keep the two – 
+
+somewhat unrelated -operations separate in the diagram. 
+
+2. 
+Configure the InitialiseCounter element so that it sets a new number 
+variable called LoopCounter to 0. 
+3. 
+Open the Element Properties view for the TestRetries element. 
+4. 
+From the Increment Variable list, select LoopCounter. 
+5. 
+For the Test Value Type select Constant Value. 
+6. 
+In the Test against Constant value field, type 3. 
+7. 
+In the Test Constraints section, select the Greater Than radio button. 
+8. 
+Connect the elements as shown. 
+9. 
+Regenerate and test the service. 
+Commercial in Confidence 
+
+
+Chapter 5: The Next Steps 
+
+We hope that this guide has given you an insight into the methodologies of service 
+creation using xMP, and has given you some idea of the possibilities available to you. 
+xMP is a very powerful environment for service creation, and it isn’t possible in 
+a 
+short guide such as this to explore all of its features and capabilities. 
+The xMP tools have extensive online help that gives information about all the 
+features. 
+For further information and assistance, contact your Vicorp representative. 
+
+
+Enhancing the service 
+
+You may wish to develop the service that we have created further. Here are some 
+ideas: 
+
+• 
+Add some more options to the main menu. You might consider adding 
+functions that allow the caller to change their account PIN, or to make a 
+payment. 
+• 
+Improve the customer identification section of the service to include a 
+simulation of authentication. 
+• 
+Revise the way in which the service plays messages to the caller if a 
+Nomatch or Noinput condition occurs. Make the messages that the service 
+plays to the caller more specific to the situation. Add log elements to write 
+messages to the user log in the event of errors. 
+Using recorded prompts 
+
+In the service we have created, all the content played to the caller was provided using 
+text-to-speech. You might try using recorded audio files. In particular, investigate the 
+Recording Schedule feature: xMP can generate a spreadsheet file which contains the 
+details of the recordings required by the service and coaching notes for the voice 
+talent making the recordings. This is of great assistance in the creation and 
+management of recorded prompts. 
+
+Using dynamic content 
+
+Dynamic content references play audio files to the caller that can be changed while 
+the service is running. You specify that a content reference is dynamic in the xMP 
+Studio tool and specify the audio files through the xMP Service Console. In this way, 
+specific content items can be changed without the need to reconfigure and redeploy 
+the service. 
+One way of modifying the Account Management service to make use of this feature 
+would be to add a Message-of-the-Day prompt to the Greeting section of the service. 
+
+Using xMP tasks 
+
+Tasks enable you to define re-usable sections of call-flow logic. They are created in 
+exactly the same way as other xMP services, and then imported into your main 
+service. You can create multiple instances of the same task in the same service, and 
+pass different parameters to each instance. 
+You may consider creating a task that is used multiple times within your service such 
+as a task to collect and verify a currency amount, or one that is used in multiple 
+services such as an authentication task. 
+
+Commercial in Confidence 
+
+

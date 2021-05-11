@@ -1,0 +1,81 @@
+.txtTituloPrint {height:20px; font-weight:bold; font-family:tahoma; font-size:10px; color:#000000; text-decoration:none; background-color:#eeeeee;}
+.txtLabelPrint {height:22px; font-family:tahoma; font-size:10px; color:#000000; text-decoration:none;}
+.txtLogin {font-family: tahoma; font-size: 11px; border: 1px groove;}
+.txtLegendaLogin {font-family: tahoma; font-size: 11px;}
+.btnLogin {font-family: tahoma; font-size: 10px; cursor: pointer;}
+.txtDadosLogin {font-family: tahoma; font-size: 11px; color: #000000;}
+.txtAvisoLogin {font-family: tahoma; font-size: 11px; color: #FF0000;}
+.linkCreditosLogin {font-family: tahoma; font-size: 10px; text-decoration:none; text-align:right; color:#000000;}
+.linkCreditosLogin:hover {font-family: tahoma; font-size: 10px; text-decoration:none; text-align:right; color:#003399;}
+.linkPaginacao {font-family: tahoma; font-size: 10px; text-decoration:none; color:#CC0000;}
+.linkPaginacao:hover {font-family: tahoma; font-size: 10px; text-decoration:none; color:#003399;}
+.bgForm {border:none; background-color:buttonface;}
+.txtLabel {font-family:tahoma; font-size:10px; color:#000000; text-decoration:none;}
+.txtCampos {font-family: tahoma; font-size: 11px; border: 1px groove;}
+.txtBotao {cursor:pointer; font-family: tahoma; font-size: 10px; background-image: url(../sys-img/i.p.search.gif); background-repeat: no-repeat; background-position: center center;}
+.btnNovo {cursor:pointer; font-family: tahoma; font-size: 10px; background-image: url(../sys-img/i.p.persoinfo.gif); background-repeat: no-repeat; background-position: center center;}
+.bgLegendaGrafico {background-image:url(../sys-img/calback.png); background-repeat:no-repeat; background-position:left; background-color:#FFFFFF; height:16px; font-family:tahoma; font-size:10px; text-align:center;}
+.txtFrame {font-family:tahoma; font-size:11px; color:#CC0000;}
+.txtPadrao {font-family:tahoma; font-size:11px; color:#666666;}
+.txtDestaque {font-family:tahoma; font-size:18px; color:#666666;; background-color:#FFFFD5; text-align:center; font-weight:bold;}
+.txtPadraoDetalhes {font-family:tahoma; font-size:11px; color:#666666; background-color:buttonface; font-weight:bold; border-bottom:1px #AAAAAA solid; height:20px;}
+.bgOpcoes {background-color: buttonface; width: 100%; text-align:center;}
+.bkp_bgBarraTitulos {font-family: tahoma; font-size: 10px; color: #FFFFFF; background-image: url(../sys-img/fundo_preto.gif); text-align: center; font-weight: bold; height: 20px;}
+.bgBarraTitulos {font-family:tahoma; font-size:10px; color:#333333; font-weight:bold; text-align:center; background-image:url(../sys-img/tile_sub.gif); height:22px;}
+.txtcolumnKey {font-family: tahoma; font-size: 11px; color: #CC0000; text-decoration:none;}
+.txtcolumnItemOff {font-family: tahoma;font-size: 11px; color: #CC0000; text-decoration:none;}
+.txtcolumnItemFixo {font-family: tahoma;font-size: 11px; color: #003399; text-decoration:none;}
+.txtcolumnItem {font-family: tahoma;font-size: 11px; color: #666666; text-decoration:none;}
+.txtcolumnItem:hover {font-family: tahoma;font-size: 11px; color: #000000; text-decoration:none; cursor:pointer;}
+.txtcolumnInativo {font-family: tahoma;font-size: 11px; color: #CC0000; text-decoration:none;}
+.txtcolumnExpirado {font-family: tahoma;font-size: 11px; color: #996600; text-decoration:none;}
+.txtcolumnItemAlternado {font-family: tahoma;font-size: 11px; color: #666666; text-decoration:none;}
+.columnKey {text-align:center; border-bottom: 1px #DADADA solid; border-right:1px #999999 solid; font-family: tahoma; font-size: 11px; color: #CC0000; background-color: #EEEEEE;}
+.columnItem {border-bottom: 1px #DADADA solid; border-right:1px #999999 solid; font-family: tahoma;font-size: 11px; color: #666666; background-color:#FFFFFF; text-align:center;}
+.columnItemOff {border-bottom: 1px #DADADA solid; border-right:1px #999999 solid; font-family: tahoma;font-size: 11px; color: #CC0000; background-color:#EEC1C1; font-weight:normal;}
+.columnItemFixo {border-bottom: 1px #DADADA solid; border-right:1px #999999 solid; font-family: tahoma;font-size: 11px; color: #003399; background-color:#eef5ff;}
+.columnInativo {border-bottom: 1px #DADADA solid; border-right:1px #999999 solid; font-family: tahoma;font-size: 11px; color: #CC0000; background-color:#FFCECE;}
+.columnExpirado {border-bottom: 1px #DADADA solid; border-right:1px #999999 solid; font-family: tahoma;font-size: 11px; color: #996600; background-color:#FFECD9;}
+.columnItemAlternado {border-bottom: 1px #DADADA solid; border-right:1px #999999 solid; font-family: tahoma;font-size: 11px; color: #666666; background-color:#EEF5FF;}
+.columnOpcoes {height:22px; border-bottom: 1px #DADADA solid; border-right:1px #999999 solid;border-right:1px #999999 solid; background-color: #F7F7F7; text-align: center;}
+.columnPaginacao {font-family:tahoma; font-size:11px; color:#000000; height:20px; background-color:#EEEEEE; border-bottom:1px #BABABA solid;border-right:1px #999999 solid;}
+.columnBlockControl {font-family:tahoma; font-size:11px; color:#000000; height:20px; background-color:#FFFFCC; border-bottom:1px #BABABA solid;border-right:1px #999999 solid;}
+.columnBlockControlOff{ background-color:#EEEEEE; border-bottom:1px #BABABA solid;border-right:1px #999999 solid; }
+.btnCadastrar {font-family: tahoma;font-size: 10px;background-image: url(../sys-img/i.p.save.gif);background-repeat: no-repeat;background-position: left;cursor: pointer;}
+.btnCancelar {font-family: tahoma;font-size: 10px;background-image: url(../sys-img/i.p.block.gif);background-repeat: no-repeat;background-position: left;cursor: pointer;}
+.btnEscolherImagem {font-family: tahoma;font-size: 10px;background-image: url(../sys-img/rundiff.gif);background-repeat: no-repeat;background-position: left;cursor: pointer;}
+.btnRelatorio {font-family: tahoma;font-size: 10px;background-image: url(../sys-img/copylist.gif);background-repeat: no-repeat;background-position: left;cursor: pointer;}
+.btnImportar {font-family: tahoma;font-size: 10px;background-image: url(../sys-img/i.p.download.gif);background-repeat: no-repeat;background-position: left;cursor: pointer;}
+.btnExportar {font-family: tahoma;font-size: 10px;background-image: url(../sys-img/i.p.upload.gif);background-repeat: no-repeat;background-position: left;cursor: pointer;}
+.btnRemoverImagem {font-family: tahoma;font-size: 10px;background-image: url(../sys-img/i.p.rem_imagem.gif);background-repeat: no-repeat;background-position: left;cursor: pointer;}
+
+.orelhas{ background-color:#F1F1F1; font-family:Tahoma; font-size:11px; float:left; width:100%; height:28px; }
+.orelha{ background-color:#DADADA; color:#000; float:left; height:28px; }
+.orelha-botao{ background-color:#A6CCDF; height:28px; float:left; width:200px; }
+.botao-orelha{ background-color:#A6CCDF; height:28px; border:0px; font-family:Tahoma; font-size:11px; font-weight:bold; width:200px; text-align:center; }
+.orelha-busca{ height:28px; color:#333333; float:left; }
+
+.form{ background-color:#EFEFDE; margin:0px; }
+
+.linkOrelha{ font-family:tahoma; font-size:11px; color:#666666; text-decoration:none; color:#FFFFFF; font-weight:bold; }
+.linkOrelha:hover{ text-decoration:underline; }
+
+.divisor{ clear:both; }
+
+.btnMenu {text-align:center; font-family:tahoma; font-size: 11px; border-left:1px #ffffff solid; border-right:1px #666666 solid; cursor: pointer;}
+.btnSubMenu {text-align:center; height:18px; font-family:tahoma; font-size: 11px; cursor: pointer;background-color: #FFFFFF;}
+.FundoMenuOn {text-align:center; height:18px;font-family:tahoma; font-size: 11px; cursor: pointer;background-color: #F2F3F4;}
+.FundoMenuOff {text-align:center; height:18px;font-family:tahoma; font-size: 11px; cursor: pointer;background-color: #FFFFFF;}
+
+.inputs{ width:300px; margin-left:5px; font-family:trebuchet,comic sans,arial; font-size:11px; color:#333333; float:left;}
+.input_peso{ width:30px; margin-left:5px; font-family:trebuchet,comic sans,arial; font-size:11px; color:#333333; float:left;}
+.inputs_select{ margin-left:5px; font-family:trebuchet,comic sans,arial; font-size:11px; color:#333333; float:left;}
+.inputs_data{ margin-left:5px; font-family:trebuchet,comic sans,arial; font-size:11px; color:#333333;}
+.inputs_programacao{ width:70px; margin-left:5px; font-family:trebuchet,comic sans,arial; font-size:11px; color:#333333; float:left;}
+.formulario{ font-family:trebuchet,comic sans,arial; font-size:11px; font-weight:bold; color:#0046d5; display:inline; margin-left:10px;}
+.input_focus{ width:300px; margin-left:5px; font-family:trebuchet,comic sans,arial; font-size:11px; color:#333333; border-bottom:1px solid #fa7d03; border-left:1px solid #fa7d03; border-right:1px solid #fa7d03; border-top:1px solid #fa7d03;}
+.input_focus_programacao{ width:70px; margin-left:5px; font-family:trebuchet,comic sans,arial; font-size:11px; color:#333333; border-bottom:1px solid #fa7d03; border-left:1px solid #fa7d03; border-right:1px solid #fa7d03; border-top:1px solid #fa7d03;}
+.input_focus1{ width:30px; margin-left:5px; font-family:trebuchet,comic sans,arial; font-size:11px; color:#333333; border-bottom:1px solid #fa7d03; border-left:1px solid #fa7d03; border-right:1px solid #fa7d03; border-top:1px solid #fa7d03;}
+.input_focus2{margin-left:5px; font-family:trebuchet,comic sans,arial; font-size:11px; color:#333333; border-bottom:1px solid #fa7d03; border-left:1px solid #fa7d03; border-right:1px solid #fa7d03; border-top:1px solid #fa7d03;}
+.alinhamento{font-family:trebuchet,comic sans,arial;  display:inline; text-align:left;}
+.texto_form{font-family:trebuchet,comic sans,arial; font-size:12px; color:#333333;}
