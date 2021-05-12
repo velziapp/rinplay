@@ -1,4 +1,6 @@
 <?php 
+error_reporting(E_ERROR | E_PARSE);
+	
 	ob_start();
 	session_start();
 	
