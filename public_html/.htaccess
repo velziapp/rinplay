@@ -1,4 +1,6 @@
-##### LOCAWEB - NAO REMOVER #####
-AddHandler php56-script .php
-suPHP_ConfigPath /home/rinplaytemp1/
-##### LOCAWEB - NAO REMOVER #####
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+RewriteRule ^(.*) - [E=BASE:%1]
+
+

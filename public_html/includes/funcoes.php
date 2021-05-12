@@ -7,7 +7,7 @@ function exibeAnel($cod_anel){
 	}
 	if($cod_anel == 2){
 		//$img_anel = "anel_agua.gif";
-		$cod_anel = "Anel da Água";
+		$cod_anel = "Anel da ï¿½gua";
 	}
 	if($cod_anel == 3){
 		//$img_anel = "anel_vento.gif";
@@ -24,7 +24,7 @@ function exibeAnel($cod_anel){
 	return $cod_anel;
 }
 
-// GERA PAGINAÇÃO
+// GERA PAGINAï¿½ï¿½O
 function GeraPaginacao($pagina, $totalLink, $totalPagina, $parametros = ''){
 	if($totalPagina > 1):
 		echo "<p>";
@@ -56,7 +56,7 @@ function GeraPaginacao($pagina, $totalLink, $totalPagina, $parametros = ''){
 	endif;
 }
 
-// GERA PAGINAÇÃO PROXIMO / ANTERIOR
+// GERA PAGINAï¿½ï¿½O PROXIMO / ANTERIOR
 function GeraPaginacaoSimples($pagina, $totalPagina, $parametros = ''){
 	if($totalPagina > 1):
 		
@@ -75,7 +75,7 @@ function GeraPaginacaoSimples($pagina, $totalPagina, $parametros = ''){
 	endif;
 }
 
-// GERA PAGINAÇÃO DEMANDA (TWITTER)
+// GERA PAGINAï¿½ï¿½O DEMANDA (TWITTER)
 function GeraPaginacaoDemanda($pagina, $totalPagina, $label = 'Jogadas anteriores', $maximo = 10){
 	if($totalPagina > 1 && $pagina <= $maximo):
 		if($pagina < $totalPagina):
@@ -86,7 +86,7 @@ function GeraPaginacaoDemanda($pagina, $totalPagina, $label = 'Jogadas anteriore
 	endif;
 }
 
-// GERA PAGINAÇÃO DEMANDA (TWITTER)
+// GERA PAGINAï¿½ï¿½O DEMANDA (TWITTER)
 function GeraPaginacaoDemandaParam($pagina, $totalPagina, $label = 'Jogadas anteriores', $param, $maximo = 10){
 	if($totalPagina > 1 && $pagina <= $maximo):
 		if($pagina < $totalPagina):
@@ -110,13 +110,13 @@ function obterPasta(){
 }
 
 // *************************** //
-// Herança das funções do site //
+// Heranï¿½a das funï¿½ï¿½es do site //
 // *************************** //
 //include( "../../sys-php/func.php" );
 
 
 // *************************** //
-// Funções exclusivas do admin //
+// Funï¿½ï¿½es exclusivas do admin //
 // *************************** //
 function gerarNome( $nome_orig ){
 	$nome_orig = str_replace( " ", "_", $nome_orig );
@@ -261,7 +261,7 @@ function uploadImg($tmp, $nome, $tipo, $largura, $pasta, $redimensiona){
 			$altura = ($largura * $y) / $x; // CALCULA ALTURA
 		else:
 			$largura = $x;
-			$altura = $y; //NÃO CALCULA ALTURA
+			$altura = $y; //Nï¿½O CALCULA ALTURA
 		endif;
 		$nova = imagecreatetruecolor($largura, $altura);
 		
@@ -294,7 +294,7 @@ function uploadImg($tmp, $nome, $tipo, $largura, $pasta, $redimensiona){
 	return $nome;
 }
 
-// Função Ano
+// Funï¿½ï¿½o Ano
 function Year($date)
 {
 	$explode = explode(" ", $date);
@@ -305,7 +305,7 @@ function Year($date)
 	return $date;
 }
 
-// diferença entre duas datas
+// diferenï¿½a entre duas datas
 function dateDiff($sDataInicial, $sDataFinal)
 {
 	$sDataI = explode("-", $sDataInicial);
