@@ -2,9 +2,7 @@
 	ob_start();
 	session_start();
 	
-	if(($_SESSION['logado'] != "") or (isset($_SESSION['logado']))):
-		header("Location: inicio.php");
-	endif;
+
 	
 	include("includes/config.php"); 
 	include("includes/connection.php"); 
