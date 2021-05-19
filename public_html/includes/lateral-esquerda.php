@@ -46,19 +46,7 @@
             
             <h5>ALIADO</h5>
             <ul id="lista-aliados">
-            <?php
-			$SQL = "SELECT C.codigo as codigo_user,C.foto, C.nome FROM rp_cadastros C JOIN rp_amigos A ON C.codigo = A.codigo_amigo WHERE A.codigo_user =".$_SESSION['logado']." AND A.status = 'S' GROUP BY c.codigo ORDER BY rand() LIMIT 9";
-			$rs  = mysql_query($SQL, $cx);
-			if(mysql_num_rows($rs) > 0):
-				while($linha = mysql_fetch_assoc($rs)){	
-				?>
-                    <li><a href="perfil.php?codigo_user=<?php echo $linha['codigo_user']; ?>"><img src="sgc/uploads/fotos/<?php echo $linha['foto']; ?>" height="36" width="36" border="0" title="<?php echo $linha['nome']; ?>"></a></li>
-				<?php 
-				} 
-			else:
-				echo '<li>Nenhum aliado</li>';
-			endif;
-			?>
+            
             </ul>
             
         </div>
