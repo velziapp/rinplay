@@ -1,19 +1,4 @@
-<?php 
-	ob_start();
-	session_start();
-	
-	if(($_SESSION['logado'] == "") or (!isset($_SESSION['logado']))):
-		header("Location: index.php");
-	endif;
 
-	include("includes/config.php"); 
-	include("includes/connection.php"); 
-	include("includes/funcoes.php"); 
-	$cx = conecta();
-	
-	$acao = LimpaEntrada($_REQUEST['acao']);
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
