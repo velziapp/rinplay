@@ -16,8 +16,8 @@
 	$senha = LimpaEntrada( $_POST["senha"] );
 	$acao = $_POST['acao'];
 	$msg  = "";
-	$port = ini_get("mysqli.default_port");
-echo "the port ". $port;
+
+	
 	 // LOGAR 
 	 if($acao == "logar"){		
 		if (($email == "") || ($senha == "")){
