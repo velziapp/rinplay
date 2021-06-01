@@ -100,25 +100,25 @@ class pfcContainer_Mysql extends pfcContainerInterface
     $db = $this->_connect($c);
     if ($db === FALSE)
     {
-      $errors[] = _pfc("Mysql container: connect error");
+      $errors[] = _pfc("mysql container: connect error");
       return $errors;
     }
 
     // create the db if it doesn't exists
     $db_exists = false;
-    $db_list = mysql_list_dbs($db);
-    while (!$db_exists && $row = mysql_fetch_object($db_list))
+    $db_list = (($___mysqli_tmp = mysqli_query($db, "SHOW DATABASES")) ? $___mysqli_tmp : false);
+    while (!$db_exists && $row = mysqli_fetch_object($db_list))
       $db_exists = ($c->container_cfg_mysql_database == $row->Database);
     if (!$db_exists)
     {
       $query = 'CREATE DATABASE '.$c->container_cfg_mysql_database;
-      $result = mysql_query($query, $db);
+      $result = mysqli_query( $db, $query);
       if ($result === FALSE)
       {
-        $errors[] = _pfc("Mysql container: create database error '%s'",mysql_error($db));
+        $errors[] = _pfc("mysql container: create database error '%s'",mysqli_error($db));
         return $errors;
       }
-      mysql_select_db($c->container_cfg_mysql_database, $db);
+      mysqli_select_db( $db, $c->container_cfg_mysql_database);
     }
  
     // create the table if it doesn't exists
@@ -131,10 +131,10 @@ class pfcContainer_Mysql extends pfcContainerInterface
     $query = str_replace('%fieldtype_leaf%',      $c->container_cfg_mysql_fieldtype_leaf,$query);
     $query = str_replace('%fieldtype_leafvalue%', $c->container_cfg_mysql_fieldtype_leafvalue,$query);
     $query = str_replace('%fieldtype_timestamp%', $c->container_cfg_mysql_fieldtype_timestamp,$query);    
-    $result = mysql_query($query, $db);
+    $result = mysqli_query( $db, $query);
     if ($result === FALSE)
     {
-      $errors[] = _pfc("Mysql container: create table error '%s'",mysql_error($db));
+      $errors[] = _pfc("mysql container: create table error '%s'",mysqli_error($db));
       return $errors;
     }
     return $errors;
@@ -145,10 +145,10 @@ class pfcContainer_Mysql extends pfcContainerInterface
     if (!$this->_db)
     {
       if ($c == null) $c =& pfcGlobalConfig::Instance();
-      $this->_db = mysql_pconnect($c->container_cfg_mysql_host.':'.$c->container_cfg_mysql_port,
-                                  $c->container_cfg_mysql_username,
-                                  $c->container_cfg_mysql_password);
-      mysql_select_db($c->container_cfg_mysql_database, $this->_db);
+      $this->_db = ($GLOBALS["___mysqli_ston"] = mysqli_connect($c->container_cfg_mysql_host.':'.$c->container_cfg_mysql_port, 
+                                  $c->container_cfg_mysql_username, 
+                                  $c->container_cfg_mysql_password));
+      mysqli_select_db( $this->_db, $c->container_cfg_mysql_database);
     }
     return $this->_db;
   }
@@ -166,18 +166,18 @@ class pfcContainer_Mysql extends pfcContainerInterface
     $sql_insert="REPLACE INTO ".$c->container_cfg_mysql_table." (`server`, `group`, `subgroup`, `leaf`, `leafvalue`, `timestamp`) VALUES('$server', '$group', '$subgroup', '$leaf', '".addslashes($leafvalue)."', '".time()."')";
     $sql_update="UPDATE ".$c->container_cfg_mysql_table." SET `leafvalue`='".addslashes($leafvalue)."', `timestamp`='".time()."' WHERE  `server`='$server' AND `group`='$group' AND `subgroup`='$subgroup' AND `leaf`='$leaf'";
 
-    $res = mysql_query($sql_count, $db);
-    $row = mysql_fetch_array($res, MYSQL_ASSOC);
+    $res = mysqli_query( $db, $sql_count);
+    $row = mysqli_fetch_array($res,  MYSQLI_ASSOC);
     if( $row['C'] == 0 )
     {
-      mysql_query($sql_insert, $db);
+      mysqli_query( $db, $sql_insert);
       return 0; // value created
     }
     else
     {
       if ($sql_update != "")
       {
-        mysql_query($sql_update, $db);
+        mysqli_query( $db, $sql_update);
       }
       return 1; // value overwritten
     }
@@ -223,10 +223,10 @@ class pfcContainer_Mysql extends pfcContainerInterface
     $sql_select="SELECT `$value`, `timestamp` FROM ".$c->container_cfg_mysql_table." WHERE `server`='$server' $sql_where $sql_group_by ORDER BY timestamp";    
     if ($sql_select != "")
     {
-      $thisresult = mysql_query($sql_select, $db);
-      if (mysql_num_rows($thisresult))
+      $thisresult = mysqli_query( $db, $sql_select);
+      if (mysqli_num_rows($thisresult))
       {
-        while ($regel = mysql_fetch_array($thisresult))
+        while ($regel = mysqli_fetch_array($thisresult))
         {
           $ret["timestamp"][] = $regel["timestamp"];
           if ($value == "leafvalue")
@@ -258,20 +258,20 @@ class pfcContainer_Mysql extends pfcContainerInterface
 
     // search for the existing leafvalue
     $sql_count = "SELECT COUNT(*) AS C FROM ".$c->container_cfg_mysql_table." WHERE `server`='$server' AND `group`='$group' AND `subgroup`='$subgroup' AND `leaf`='$leaf' LIMIT 1";
-    $res = mysql_query($sql_count, $db);
-    $row = mysql_fetch_array($res, MYSQL_ASSOC);
+    $res = mysqli_query( $db, $sql_count);
+    $row = mysqli_fetch_array($res,  MYSQLI_ASSOC);
     if( $row['C'] == 0 )
     {
       $leafvalue = 1;
       $sql_insert="REPLACE INTO ".$c->container_cfg_mysql_table." (`server`, `group`, `subgroup`, `leaf`, `leafvalue`, `timestamp`) VALUES('$server', '$group', '$subgroup', '$leaf', '".$leafvalue."', '".$time."')";
-      mysql_query($sql_insert, $db);
+      mysqli_query( $db, $sql_insert);
     }
     else
     {
       $sql_update="UPDATE ".$c->container_cfg_mysql_table." SET `leafvalue`= LAST_INSERT_ID( leafvalue + 1 ), `timestamp`='".$time."' WHERE  `server`='$server' AND `group`='$group' AND `subgroup`='$subgroup' AND `leaf`='$leaf'";
-      mysql_query($sql_update, $db);
-      $res = mysql_query('SELECT LAST_INSERT_ID();', $db);      
-      $row = mysql_fetch_array($res, MYSQL_ASSOC);
+      mysqli_query( $db, $sql_update);
+      $res = mysqli_query( $db, 'SELECT LAST_INSERT_ID();');      
+      $row = mysqli_fetch_array($res,  MYSQLI_ASSOC);
       $leafvalue = $row['LAST_INSERT_ID()'];
     }
     
@@ -300,7 +300,7 @@ class pfcContainer_Mysql extends pfcContainerInterface
     if ($leaf != NULL)
       $sql_delete .= " AND `leaf`='$leaf'";
     
-    mysql_query($sql_delete, $db);
+    mysqli_query( $db, $sql_delete);
     return true;
   }
 

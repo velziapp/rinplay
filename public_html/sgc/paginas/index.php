@@ -18,7 +18,7 @@
 	$TBL   = "rp_tutoriais"; 
 	
 	if($acao == "excluir"){		
-		mysql_query("DELETE FROM " . $TBL . " WHERE codigo =". $codigo, $cx);	
+		mysqli_query( $cx, "DELETE FROM " . $TBL . " WHERE codigo =". $codigo);	
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

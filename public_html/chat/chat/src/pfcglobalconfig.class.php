@@ -518,7 +518,7 @@ class pfcGlobalConfig
 
   /**
    * <p>Used to specify the chat container (chat database).
-   * Accepted containers are : File and Mysql (maybe others in the future).
+   * Accepted containers are : File and mysql (maybe others in the future).
    * (Default value: 'File')</p>
    */
   var $container_type = 'File';

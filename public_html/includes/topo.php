@@ -62,7 +62,7 @@ function limpaBusca(){
 		else: 
 		// DEFININDO O ANEL DO USUÁRIO
 			if($_SESSION['logado'] != ""){
-				$cod_anel = mysql_result(mysql_query("SELECT codigo_anel FROM rp_cadastros WHERE codigo = ".$_SESSION['logado'],$cx),0,0);
+				$cod_anel = mysqli_result(mysqli_query($cx, "SELECT codigo_anel FROM rp_cadastros WHERE codigo = ".$_SESSION['logado']), 0, 0);
 				if($cod_anel == 1){
 					$img_anel = "anel_terra.gif";
 					$titleAnel = "Anel da Terra";

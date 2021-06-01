@@ -17,14 +17,14 @@
 	
 	// SELECIONA NOME DA COMUNIDADE
 	$sql = "SELECT nome FROM rp_comunidades WHERE codigo=".$codigo_comunidade;
-	$rsComu = mysql_query($sql, $cx);
-	$lnComu = mysql_fetch_assoc($rsComu);
+	$rsComu = mysqli_query( $cx, $sql);
+	$lnComu = mysqli_fetch_assoc($rsComu);
 	$nome = $lnComu['nome'];
 
 	// VERIFICA SE O USUÁRIO LOGADO PARTICIPA DA COMUNIDADE
 	$membro = "SELECT COUNT(codigo) as qtd FROM rp_comunidades_membros WHERE codigo_user =".$_SESSION['logado']." AND codigo_comunidade=".$codigo_comunidade;
-	$result = mysql_query($membro, $cx);
-	$l = mysql_fetch_assoc($result);
+	$result = mysqli_query( $cx, $membro);
+	$l = mysqli_fetch_assoc($result);
 	if($l['qtd'] == 1)
 		$fazparte = true;
 	else
@@ -33,8 +33,8 @@
 	
 	// VERIFICA SE O USUÁRIO LOGADO É O DONO DA COMUNIDADE
 	$dono = "SELECT COUNT(codigo) as qtd FROM rp_comunidades WHERE codigo_user =".$_SESSION['logado']." AND codigo=".$codigo_comunidade;
-	$result = mysql_query($dono, $cx);
-	$l = mysql_fetch_assoc($result);
+	$result = mysqli_query( $cx, $dono);
+	$l = mysqli_fetch_assoc($result);
 	if($l['qtd'] == 1)
 		$edono = true;
 	else
@@ -48,14 +48,14 @@
 		case "criarPost":
 			$post = LimpaEntrada($_REQUEST['post']);
 			$SQL = "INSERT INTO rp_forum_posts(codigo_user, codigo_forum, post) VALUES(".$_SESSION['logado'].",".$codigo_topico.", '".$post."')";
-			mysql_query($SQL, $cx);
+			mysqli_query( $cx, $SQL);
 			header("location: comunidade-topico-view.php?codigo_comunidade=".$codigo_comunidade."&codigo_topico=".$codigo_topico);		
 		break;
 		
 		case "excluirPost":
 			$codigo_post = LimpaEntrada($_REQUEST['codigo_post']);
 			$SQL = "DELETE FROM rp_forum_posts WHERE codigo = ".$codigo_post." AND codigo_forum = ".$codigo_topico." AND codigo_user = ".$_SESSION['logado'];
-			mysql_query($SQL, $cx);
+			mysqli_query( $cx, $SQL);
 			header("location: comunidade-topico-view.php?codigo_comunidade=".$codigo_comunidade."&codigo_topico=".$codigo_topico);		
 		break;
 	}
@@ -106,9 +106,9 @@
                     <?php
 					// BUSCA O TÓPICO 
 					$s = "SELECT F.*, U.foto, U.nome, U.codigo as codigo_user FROM rp_forum F JOIN rp_cadastros U ON F.codigo_user = U.codigo WHERE F.codigo = ".$codigo_topico;
-					$r = mysql_query($s, $cx); 	
-					if(mysql_num_rows($r) > 0)
-						while($ln = mysql_fetch_assoc($r)){
+					$r = mysqli_query( $cx, $s); 	
+					if(mysqli_num_rows($r) > 0)
+						while($ln = mysqli_fetch_assoc($r)){
 							$nomeUsuario = explode(" ", $ln['nome']); 
 							?>
                             <table class="tb-comentario" width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -134,10 +134,10 @@
 					<?php
 					// BUSCA TODOS OS POSTS DO TÓPICO
 					$s = "SELECT P.*, U.foto, U.nome, U.codigo as codigoUser FROM rp_forum_posts P JOIN rp_cadastros U ON P.codigo_user = U.codigo AND P.codigo_forum = ".$codigo_topico." ORDER BY P.codigo DESC";
-					$r = mysql_query($s, $cx);
+					$r = mysqli_query( $cx, $s);
 					$consulta = "SELECT COUNT(codigo) FROM rp_forum_posts WHERE codigo_forum =".$codigo_topico;  	
-					if(mysql_num_rows($r) > 0)
-						while($ln = mysql_fetch_assoc($r)){
+					if(mysqli_num_rows($r) > 0)
+						while($ln = mysqli_fetch_assoc($r)){
 							$nomeUsuario = explode(" ", $ln['nome']); 
 							?>
                             <table class="tb-comentario" width="100%" border="0" cellpadding="0" cellspacing="0">

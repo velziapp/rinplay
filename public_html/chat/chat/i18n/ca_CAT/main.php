@@ -305,13 +305,13 @@ $GLOBALS["i18n"]["Maximum number of private xat has been reached"] = "S\'ha arri
 $GLOBALS["i18n"]["Send"] = "Envia";
 
 // line 86 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: connect error"] = "Contenidor MySQL: error de connexió";
+$GLOBALS["i18n"]["mysql container: connect error"] = "Contenidor mysql: error de connexió";
 
 // line 101 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create database error '%s'"] = "Contenidor MySQL: '%s' error en la creació de la base de dades";
+$GLOBALS["i18n"]["mysql container: create database error '%s'"] = "Contenidor mysql: '%s' error en la creació de la base de dades";
 
 // line 112 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create table error '%s'"] = "Contenidor MySQL: '%s' error en la creació de taula(es)";
+$GLOBALS["i18n"]["mysql container: create table error '%s'"] = "Contenidor mysql: '%s' error en la creació de taula(es)";
 
 // line 80 in chat.js.tpl.php
 $GLOBALS["i18n"]["You are not allowed to speak to yourself"] = "No està permès parlar-se a un mateix";

@@ -40,11 +40,11 @@ function gerarNome( $nome_orig ){
 function comboPorTabela( $nome, $tabela, $col_cod, $col_desc, $selecionado, $classe, $tam, $item0, $onChange ){
 	$query_temp = "";
 	$query_temp = "SELECT $col_cod, $col_desc FROM $tabela ORDER BY $col_desc ASC";
-	$rsMontaCombo = @mysql_query( $query_temp );
+	$rsMontaCombo = @mysqli_query($GLOBALS["___mysqli_ston"],  $query_temp );
 	if( $rsMontaCombo ){
 		echo "<select name='$nome' id='$nome' class='$classe' style='width:$tam;' " . ( $onChange != "" ? "onChange='" . $onChange . "'" : "" ) . ">";
 		if( $item0 ) echo "<option value='0'>:: Selecione ::</option>";
-		while( $l = mysql_fetch_row( $rsMontaCombo ) ){
+		while( $l = mysqli_fetch_row( $rsMontaCombo ) ){
 			echo "<option value='$l[0]' ";
 			if( $l[0] == $selecionado ) echo "SELECTED";
 			echo ">$l[1]</option>";
@@ -104,7 +104,7 @@ function converterHora( $horario ){
 function insereLog( $usr, $acao, $itens, $con ){
 	$acao = substr( $acao, 0, 255 );
 	$sql = "INSERT INTO franca_logs( codigo_usuario, acao, itens, data, hora ) VALUES( $usr, '" . strtolower( $acao ) . "', '" . strtolower( $itens ) . "', '" . date( "Y-m-d" ) . "', '" . date( "H:i:s" ) . "' )";
-	mysql_query( $sql, $con );
+	mysqli_query( $con ,  $sql);
 }
 
 function msgbox( $txt, $pag ){

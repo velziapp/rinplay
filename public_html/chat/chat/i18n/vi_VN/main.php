@@ -307,13 +307,13 @@ $GLOBALS["i18n"]["Maximum number of private chat has been reached"] = "Số lư�
 $GLOBALS["i18n"]["Send"] = "Gửi đi";
 
 // line 86 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: connect error"] = "Lỗi Mysql: không kết nối được với cơ sở dữ liệu";
+$GLOBALS["i18n"]["mysql container: connect error"] = "Lỗi mysql: không kết nối được với cơ sở dữ liệu";
 
 // line 101 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create database error '%s'"] = "Lỗi Mysql: không tạo được cơ sở dữ liệu '%s'";
+$GLOBALS["i18n"]["mysql container: create database error '%s'"] = "Lỗi mysql: không tạo được cơ sở dữ liệu '%s'";
 
 // line 112 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create table error '%s'"] = "Lỗi Mysql: không tạo được bảng '%s'";
+$GLOBALS["i18n"]["mysql container: create table error '%s'"] = "Lỗi mysql: không tạo được bảng '%s'";
 
 // line 80 in chat.js.tpl.php
 $GLOBALS["i18n"]["You are not allowed to speak to yourself"] = "Bạn không được phép tự chat một mình";

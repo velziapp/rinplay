@@ -17,9 +17,9 @@
 	if((empty($codigo_album)) || (!is_numeric($codigo_album))):
 		header("Location: album.php");
 	else:
-		$rsAlbum = mysql_query("SELECT album FROM rp_albuns WHERE codigo = $codigo_album AND codigo_user = ". $_SESSION['logado'] ."", $cx);
-		if(mysql_num_rows($rsAlbum) > 0):
-			$lnAlbum = mysql_fetch_assoc($rsAlbum);
+		$rsAlbum = mysqli_query( $cx, "SELECT album FROM rp_albuns WHERE codigo = $codigo_album AND codigo_user = ". $_SESSION['logado'] ."");
+		if(mysqli_num_rows($rsAlbum) > 0):
+			$lnAlbum = mysqli_fetch_assoc($rsAlbum);
 			$tituloAlbum = $lnAlbum['album'];
 		else:
 			header("Location: album.php");
@@ -53,7 +53,7 @@
 					uploadImg($tmp, $foto, $type, 800, $pasta, 'S'); // FAZ O UPLOAD
 			
 					$SQL = "INSERT INTO rp_albuns_fotos (foto, codigo_album, legenda) VALUES ('".$foto."',".$codigo_album.",'".$legenda."')";
-					mysql_query($SQL, $cx);				
+					mysqli_query( $cx, $SQL);				
 			}
 			header("Location: albumFotos.php?codigo_album=$codigo_album");
 		break;
@@ -72,7 +72,7 @@
 		
 			if(empty($name)){	
 				$UPDATE = "UPDATE rp_albuns_fotos SET legenda = '".$legenda."' WHERE codigo = ".$codigo_foto." AND codigo_album = ".$codigo_album;
-				mysql_query($UPDATE, $cx);			
+				mysqli_query( $cx, $UPDATE);			
 			}
 			else{	
 				if(in_array($type, $permitido)){
@@ -90,7 +90,7 @@
 					uploadImg($tmp, $foto, $type, 800, $pasta, 'S'); // FAZ O UPLOAD
 			
 					$UPDATE = "UPDATE rp_albuns_fotos SET legenda = '".$legenda."', foto ='".$foto."' WHERE codigo = ".$codigo_foto." AND codigo_album = ".$codigo_album;
-					mysql_query($UPDATE, $cx);				
+					mysqli_query( $cx, $UPDATE);				
 				}
 			}
 			header("Location: albumFotos.php?codigo_album=$codigo_album");
@@ -99,7 +99,7 @@
 		case "excluirFoto":
 			$codigo_foto = LimpaEntrada($_REQUEST['codigo_foto']);
 			$SQL  = "DELETE FROM rp_albuns_fotos WHERE codigo_album =".$codigo_album." AND codigo = ".$codigo_foto;
-			mysql_query($SQL, $cx);
+			mysqli_query( $cx, $SQL);
 			header("Location: albumFotos.php?codigo_album=$codigo_album");
 		break;
 	}
@@ -216,15 +216,15 @@
             <div id="galeria-fotos">
             <?php
 				$sql = "SELECT codigo, foto, legenda, codigo_album FROM rp_albuns_fotos WHERE codigo_album = ".$codigo_album;
-				$rsFotos = mysql_query($sql, $cx);
-				$totalFotos = mysql_num_rows($rsFotos);
+				$rsFotos = mysqli_query( $cx, $sql);
+				$totalFotos = mysqli_num_rows($rsFotos);
 				if($totalFotos > 0):
 				?>
 				<table width="100%" border="0">
                 	<tr>
 					<?php
 					$cont = 0;
-                    while($lnFotos = mysql_fetch_assoc($rsFotos)){
+                    while($lnFotos = mysqli_fetch_assoc($rsFotos)){
                     ?>
                         <td width="166" align="center" valign="top">
                         		<div style="width:128px; overflow:hidden;" class="lightbox" >	

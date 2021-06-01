@@ -7,7 +7,7 @@ class pfcContainerTestcase_Mysql extends pfcContainerTestcase
   // constructor of the test suite
   function pfcContainerTestcase_Mysql($name)
   {
-    $this->type = "Mysql";
+    $this->type = "mysql";
     $this->pfcContainerTestcase($name);
   }
   

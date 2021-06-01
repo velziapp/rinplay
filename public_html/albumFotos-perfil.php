@@ -18,9 +18,9 @@
 	if(empty($codigo_album)):
 		header("Location: album-perfil.php?codigo_user=$codigo_user");
 	else:
-		$rsAlbum = mysql_query("SELECT album FROM rp_albuns WHERE codigo = $codigo_album AND codigo_user = ". $codigo_user ."", $cx);
-		if(mysql_num_rows($rsAlbum) > 0):
-			$lnAlbum = mysql_fetch_assoc($rsAlbum);
+		$rsAlbum = mysqli_query( $cx, "SELECT album FROM rp_albuns WHERE codigo = $codigo_album AND codigo_user = ". $codigo_user ."");
+		if(mysqli_num_rows($rsAlbum) > 0):
+			$lnAlbum = mysqli_fetch_assoc($rsAlbum);
 			$tituloAlbum = $lnAlbum['album'];
 		else:
 		header("Location: album-perfil.php?codigo_user=$codigo_user");
@@ -68,15 +68,15 @@
           	<div id="galeria-fotos">
             <?php
 				$sql = "SELECT codigo, foto, legenda, codigo_album FROM rp_albuns_fotos WHERE codigo_album = ".$codigo_album;
-				$rsFotos = mysql_query($sql, $cx);
-				$totalFotos = mysql_num_rows($rsFotos);
+				$rsFotos = mysqli_query( $cx, $sql);
+				$totalFotos = mysqli_num_rows($rsFotos);
 				if($totalFotos > 0):
 				?>
 				<table width="100%" border="0">
                 	<tr>
 					<?php
 					$cont = 0;
-                    while($lnFotos = mysql_fetch_assoc($rsFotos)){
+                    while($lnFotos = mysqli_fetch_assoc($rsFotos)){
                     ?>
                         <td width="166" align="center" valign="top">
                         		<div style="width:128px; overflow:hidden;" class="lightbox" >	

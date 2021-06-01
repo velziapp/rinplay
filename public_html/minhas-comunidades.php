@@ -42,7 +42,7 @@
 				uploadImg($tmp, $foto, $type, 0, $pasta, 'N'); // FAZ O UPLOAD
 		
 				$SQL  = "INSERT INTO rp_comunidades (nome, descricao, codigo_categoria, foto, codigo_user) VALUES ('".$nome."','".$descricao."',".$codigo_categoria.",'".$foto."',".$_SESSION['logado'].")";
-				mysql_query($SQL, $cx);
+				mysqli_query( $cx, $SQL);
 			}
 			header("Location: minhas-comunidades.php");
 		break;
@@ -50,9 +50,9 @@
 		case "excluirComunidade":
 			$codigo_comunidade = LimpaEntrada($_REQUEST['codigo_comunidade']);
 			$SQL  = "DELETE FROM rp_comunidades WHERE codigo_user =".$_SESSION['logado']." AND codigo = ".$codigo_comunidade;
-			mysql_query($SQL, $cx);
+			mysqli_query( $cx, $SQL);
 			$SQL  = "DELETE FROM rp_comunidades_membros WHERE codigo_comunidade =".$codigo_comunidade;
-			mysql_query($SQL, $cx);
+			mysqli_query( $cx, $SQL);
 			header("Location: minhas-comunidades.php");
 		break;
 	}
@@ -89,9 +89,9 @@
             <table width="100%" border="0">
             <?php
 				$s = "SELECT * FROM rp_comunidades WHERE codigo_user = ".$_SESSION['logado']." ORDER BY nome";
-				$r = mysql_query($s, $cx);
-				while($ln = mysql_fetch_assoc($r)){
-					$qtdMembros = mysql_result(mysql_query("SELECT COUNT(codigo) FROM rp_comunidades_membros WHERE codigo_comunidade = ".$ln['codigo'],$cx),0,0);
+				$r = mysqli_query( $cx, $s);
+				while($ln = mysqli_fetch_assoc($r)){
+					$qtdMembros = mysqli_result(mysqli_query($cx, "SELECT COUNT(codigo) FROM rp_comunidades_membros WHERE codigo_comunidade = ".$ln['codigo']), 0, 0);
 					echo "<tr><td rowspan='2' width='80' align='center'>";
 					echo "<a href='comunidade-perfil.php?codigo_comunidade=".$ln['codigo']."'><img src='sgc/uploads/comunidades/".$ln['foto']."' height='50' align='left'></a>";
 					echo "</td>";

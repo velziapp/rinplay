@@ -17,9 +17,9 @@
 		header("Location: artigos.php");
 	else:
 		$s = "SELECT * FROM rp_artigos WHERE codigo =".$codigo; 
-		$r = mysql_query($s, $cx);
-		$ln = mysql_fetch_assoc($r);
-		if(mysql_num_rows($r) <= 0):
+		$r = mysqli_query( $cx, $s);
+		$ln = mysqli_fetch_assoc($r);
+		if(mysqli_num_rows($r) <= 0):
 			header("Location: artigos.php");
 		endif;
 	endif;

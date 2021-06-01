@@ -18,7 +18,7 @@ if( $acao == "incluir"){
 	// Inclui o admin //		
 	$SQL = "INSERT INTO ".$TBL."( nome, login, senha, email)"; 
 	$SQL .=	"VALUES( '$cNome', '$cLogin', '$cSenha', '$cEmail' )";
-	mysql_query( $SQL, $cx );
+	mysqli_query( $cx ,  $SQL);
 
 	// Informa o usuário //
 	msgbox( "Registro cadastrado com sucesso!\\n$obs", "index.php" );
@@ -114,7 +114,7 @@ if( $acao == "incluir"){
 		</form>
 	</table><?php
 
-mysql_close( $cx );
+((is_null($___mysqli_res = mysqli_close( $cx ))) ? false : $___mysqli_res);
 
 ?>
 </fieldset>

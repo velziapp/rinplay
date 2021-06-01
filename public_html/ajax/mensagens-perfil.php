@@ -20,8 +20,8 @@ if($_POST['acao'] == 'pag'):
 	$totalLink		= 5;
 	
 	// TOTAL DE MENSAGENS
-	$verificaAmigos = mysql_query("SELECT * FROM rp_amigos WHERE codigo_user = ". $codigo_user ." OR (codigo_amigo = ". $codigo_user ." AND codigo_user = ". $_SESSION['logado'] .") AND status = 'S'", $cx);
-	if(mysql_num_rows($verificaAmigos) > 0):
+	$verificaAmigos = mysqli_query( $cx, "SELECT * FROM rp_amigos WHERE codigo_user = ". $codigo_user ." OR (codigo_amigo = ". $codigo_user ." AND codigo_user = ". $_SESSION['logado'] .") AND status = 'S'");
+	if(mysqli_num_rows($verificaAmigos) > 0):
 		$sql = "SELECT
 					rp_mensagens.codigo,
 					rp_mensagens.codigo_user AS codigo_user,
@@ -52,15 +52,15 @@ if($_POST['acao'] == 'pag'):
 				GROUP BY rp_mensagens.codigo
 				";
 	endif;
-	$rsTotal = mysql_query($sql, $cx);
-	$totalRegistros = mysql_num_rows($rsTotal);
+	$rsTotal = mysqli_query( $cx, $sql);
+	$totalRegistros = mysqli_num_rows($rsTotal);
 	
 	// CONTINUA PAGINAÇÃO
 	$totalPagina	= ceil($totalRegistros / $quantidade);
 	
 	// BUSCA TODAS AS MENSAGENS
-	$verificaAmigos = mysql_query("SELECT * FROM rp_amigos WHERE codigo_user = ". $codigo_user ." OR (codigo_amigo = ". $codigo_user ." AND codigo_user = ". $_SESSION['logado'] .") AND status = 'S'", $cx);
-	if(mysql_num_rows($verificaAmigos) > 0):
+	$verificaAmigos = mysqli_query( $cx, "SELECT * FROM rp_amigos WHERE codigo_user = ". $codigo_user ." OR (codigo_amigo = ". $codigo_user ." AND codigo_user = ". $_SESSION['logado'] .") AND status = 'S'");
+	if(mysqli_num_rows($verificaAmigos) > 0):
 		$s = "SELECT
 				rp_mensagens.codigo,
 				rp_mensagens.foto AS imagem,
@@ -99,9 +99,9 @@ if($_POST['acao'] == 'pag'):
 			ORDER BY rp_mensagens.codigo DESC
 				LIMIT $inicio, $quantidade";
 	endif;
-	$r = mysql_query($s, $cx);
-	if(mysql_num_rows($r) > 0){
-		while($ln = mysql_fetch_assoc($r)){
+	$r = mysqli_query( $cx, $s);
+	if(mysqli_num_rows($r) > 0){
+		while($ln = mysqli_fetch_assoc($r)){
 				if($ln['id_mensagem_compartilhar'] > 0){
 					$compartilhado = true;
 					$s = "SELECT
@@ -118,12 +118,12 @@ if($_POST['acao'] == 'pag'):
 					WHERE
 						rp_mensagens.codigo = ". $ln['id_mensagem_compartilhar'] ."
 					GROUP BY rp_mensagens.codigo";
-					$fotoCompartilhar = mysql_result(mysql_query("SELECT rp_cadastros.foto FROM rp_cadastros WHERE rp_cadastros.codigo = ". $ln['codigo_user'] ."", $cx),0 ,0);
-					$nomeCompartilhar = mysql_result(mysql_query("SELECT rp_cadastros.nome FROM rp_cadastros WHERE rp_cadastros.codigo = ". $ln['codigo_user'] ."", $cx),0 ,0);
-					$idCompartilhar = mysql_result(mysql_query("SELECT rp_cadastros.codigo FROM rp_cadastros WHERE rp_cadastros.codigo = ". $ln['codigo_user'] ."", $cx),0 ,0);
+					$fotoCompartilhar = mysqli_result(mysqli_query( $cx, "SELECT rp_cadastros.foto FROM rp_cadastros WHERE rp_cadastros.codigo = ". $ln['codigo_user'] .""), 0 , 0);
+					$nomeCompartilhar = mysqli_result(mysqli_query( $cx, "SELECT rp_cadastros.nome FROM rp_cadastros WHERE rp_cadastros.codigo = ". $ln['codigo_user'] .""), 0 , 0);
+					$idCompartilhar = mysqli_result(mysqli_query( $cx, "SELECT rp_cadastros.codigo FROM rp_cadastros WHERE rp_cadastros.codigo = ". $ln['codigo_user'] .""), 0 , 0);
 					$msgCompartilhar = $ln['codigo'];
 					
-					$ln = mysql_fetch_assoc(mysql_query($s, $cx));
+					$ln = mysqli_fetch_assoc(mysqli_query( $cx, $s));
 				} else {
 					$compartilhado = false;	
 				}
@@ -131,7 +131,7 @@ if($_POST['acao'] == 'pag'):
 				$nomeUsuario = explode(" ", $ln['nome']); 
 				// BUSCA A QAUNTIDADE DE COMENTÁRIOS DA MENSAGEM 
 				$id_mensagem = $ln['codigo'];
-				$qtd = mysql_result(mysql_query("SELECT COUNT(codigo) FROM rp_mensagens_comentarios WHERE codigo_mensagem = ".$ln['codigo'],$cx),0,0); 
+				$qtd = mysqli_result(mysqli_query($cx, "SELECT COUNT(codigo) FROM rp_mensagens_comentarios WHERE codigo_mensagem = ".$ln['codigo']), 0, 0); 
 				?>
 				
 				<table class="tb-comentario" width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -245,12 +245,12 @@ if($_POST['acao'] == 'pag'):
 						<?php
 						// BUSCA TODOS OS COMENTÁRIOS DA MENSAGEM
 						$sql = "SELECT M.*, U.foto, U.nome, U.codigo as codigoUser FROM rp_mensagens_comentarios M JOIN rp_cadastros U ON M.codigo_user = U.codigo AND codigo_mensagem = ".$id_mensagem." ORDER BY M.codigo DESC";
-						$qryComentario = mysql_query($sql, $cx);
-						if(mysql_num_rows($qryComentario) > 0){
+						$qryComentario = mysqli_query( $cx, $sql);
+						if(mysqli_num_rows($qryComentario) > 0){
 						?>
 							<table class="tb-subcomentario" width="100%" border="0" cellpadding="0" cellspacing="0">
 							<?php
-							while($lnComentario = mysql_fetch_assoc($qryComentario)){
+							while($lnComentario = mysqli_fetch_assoc($qryComentario)){
 							$nomeUsuario = explode(" ", $lnComentario['nome']); 
 							?>
 							<tr>

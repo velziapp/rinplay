@@ -310,13 +310,13 @@ $GLOBALS["i18n"]["Send"] = "Invia";
 $GLOBALS["i18n"]["'%s' parameter must be a charatere string"] = "Il parametro '%s' deve essere un carattere valido";
 
 // line 86 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: connect error"] = "Mysql container: errore di connessione";
+$GLOBALS["i18n"]["mysql container: connect error"] = "mysql container: errore di connessione";
 
 // line 101 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create database error '%s'"] = "Mysql container: errore nella creazione del database '%s'";
+$GLOBALS["i18n"]["mysql container: create database error '%s'"] = "mysql container: errore nella creazione del database '%s'";
 
 // line 112 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create table error '%s'"] = "Mysql container: errore nella creazione della tabella '%s'";
+$GLOBALS["i18n"]["mysql container: create table error '%s'"] = "mysql container: errore nella creazione della tabella '%s'";
 
 // line 80 in chat.js.tpl.php
 $GLOBALS["i18n"]["You are not allowed to speak to yourself"] = "Non puoi parlare con te stesso!";

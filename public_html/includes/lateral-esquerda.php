@@ -15,11 +15,11 @@
         	
             <?php
 				// USUÁRIO LOGADO
-				$fotoUser = mysql_fetch_assoc(mysql_query("SELECT nome, foto FROM rp_cadastros WHERE codigo = '".$_SESSION['logado']."'", $cx));
+				$fotoUser = mysqli_fetch_assoc(mysqli_query( $cx, "SELECT nome, foto FROM rp_cadastros WHERE codigo = '".$_SESSION['logado']."'"));
 				// NOME DO USUÁRIO LOGADO
 				$NomeUser = explode(" ", $fotoUser['nome']);
 				// QUANTIDADE DE PEDIDOS DE AMIZADE
-				$qtdAdd = mysql_result(mysql_query("SELECT COUNT(*) FROM rp_amigos WHERE codigo_amigo = '".$_SESSION['logado']."' AND status = 'N'", $cx),0,0);
+				$qtdAdd = mysqli_result(mysqli_query( $cx, "SELECT COUNT(*) FROM rp_amigos WHERE codigo_amigo = '".$_SESSION['logado']."' AND status = 'N'"), 0, 0);
 			?>
 			<a href="inicio.php"><img src="sgc/uploads/fotos/<?php echo $fotoUser['foto'];?>" width="80" height="80"></a>
             <img src="img/<?php echo $img_anel;?>" height="80" title="<?php echo $titleAnel; ?>" alt="<?php echo $titleAnel; ?>">
@@ -48,9 +48,9 @@
             <ul id="lista-aliados">
             <?php
 			$SQL = "SELECT C.codigo as codigo_user,C.foto, C.nome FROM rp_cadastros C JOIN rp_amigos A ON C.codigo = A.codigo_amigo WHERE A.codigo_user =".$_SESSION['logado']." AND A.status = 'S' GROUP BY c.codigo ORDER BY rand() LIMIT 9";
-			$rs  = mysql_query($SQL, $cx);
-			if(mysql_num_rows($rs) > 0):
-				while($linha = mysql_fetch_assoc($rs)){	
+			$rs  = mysqli_query( $cx, $SQL);
+			if(mysqli_num_rows($rs) > 0):
+				while($linha = mysqli_fetch_assoc($rs)){	
 				?>
                     <li><a href="perfil.php?codigo_user=<?php echo $linha['codigo_user']; ?>"><img src="sgc/uploads/fotos/<?php echo $linha['foto']; ?>" height="36" width="36" border="0" title="<?php echo $linha['nome']; ?>"></a></li>
 				<?php 

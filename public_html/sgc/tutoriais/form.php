@@ -31,7 +31,7 @@
 		copy($thumb, "../uploads/" . $nome_thumb);	
 		
 		$sql = "INSERT INTO ".$TBL."(titulo, data, texto, arquivo, thumb) VALUES ('" . $titulo . "','" . converterData($data, "in") . "','" . $texto ."','" . $nome_arquivo ."','" . $nome_thumb ."')";
-		mysql_query($sql, $cx);
+		mysqli_query( $cx, $sql);
 		echo "<script>alert('Registro inserido com sucesso!');</script>";
 		echo"<script>opener.location.reload();</script>";
 		echo "<script>window.close();</script>";
@@ -63,7 +63,7 @@
 		}	
 		
 		$sql = "UPDATE ".$TBL." SET titulo = '".$titulo."', data = '".$data."', texto = '".$texto."', arquivo = '".$nome_arquivo."', thumb = '".$nome_thumb."' WHERE codigo = ".$codigo; 
-		mysql_query($sql, $cx);
+		mysqli_query( $cx, $sql);
 		echo "<script>alert('Registro alterado com sucesso!');</script>";
 		echo"<script>opener.location.reload();</script>";
 		echo "<script>window.close();</script>";
@@ -84,8 +84,8 @@
 <?php 
 	if($codigo > 0){
 		$SQL = "SELECT * FROM ".$TBL." WHERE codigo =".$codigo;
-		$rs = mysql_query($SQL, $cx);
-		$ln = mysql_fetch_assoc($rs);
+		$rs = mysqli_query( $cx, $SQL);
+		$ln = mysqli_fetch_assoc($rs);
 	}
 ?>
 <form method="post" action="form.php?codigo=<?php echo $codigo; ?>" name="frm_noticias" enctype="multipart/form-data">

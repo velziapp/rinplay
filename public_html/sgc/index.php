@@ -22,9 +22,9 @@
 		{
 		$query = "SELECT codigo, login, senha FROM ".$TBL." WHERE login ='" . $login ."' AND senha ='" . $senha ."'";
 		
-		$ret=mysql_query($query , $cx);
-			if(mysql_num_rows($ret) > 0){
-				while($item=mysql_fetch_array($ret)){
+		$ret=mysqli_query( $cx, $query );
+			if(mysqli_num_rows($ret) > 0){
+				while($item=mysqli_fetch_array($ret)){
 					if (($login == $item[1]) && ($senha == $item[2]))
 					{
 					$_SESSION['Id'] = $item[0];
@@ -54,14 +54,14 @@ if( $acao == "alterar" ){
 	}
 	else{
 		
-		$rsLogin = mysql_query( "SELECT codigo, login, senha FROM ".$TBL." WHERE login = '$login' AND senha = '$senha'", $cx );
-		if( mysql_num_rows( $rsLogin ) == 0 ){
+		$rsLogin = mysqli_query( $cx ,  "SELECT codigo, login, senha FROM ".$TBL." WHERE login = '$login' AND senha = '$senha'");
+		if( mysqli_num_rows( $rsLogin ) == 0 ){
 			$msg = "Login e/ou Senha inv&aacute;lidos - Tente novamente";
 		} else{
-			$rst_login = mysql_fetch_assoc( $rsLogin );
+			$rst_login = mysqli_fetch_assoc( $rsLogin );
 			if( $login == $rst_login["login"] ){				
 				$sql = "UPDATE ".$TBL." SET senha = '" . $novasenha . "' WHERE codigo = " . $rst_login["codigo"];
-				mysql_query( $sql, $cx );				
+				mysqli_query( $cx ,  $sql);				
 				$msg = "Senha alterada com sucesso";				
 			}
 		}
@@ -78,11 +78,11 @@ if( $acao == "lembrar" ){
 	}
 	else{
 		
-		$rsLogin = mysql_query( "SELECT codigo, login, nome, email FROM ".$TBL." WHERE login = '$login'", $cx );
-		if( mysql_num_rows( $rsLogin ) == 0 ){
+		$rsLogin = mysqli_query( $cx ,  "SELECT codigo, login, nome, email FROM ".$TBL." WHERE login = '$login'");
+		if( mysqli_num_rows( $rsLogin ) == 0 ){
 			$msg = "Login inv&aacute;lido - Tente novamente";
 		} else{
-			$rst_login = mysql_fetch_assoc( $rsLogin );
+			$rst_login = mysqli_fetch_assoc( $rsLogin );
 			if( $login == $rst_login["login"] ){
 				
 				$arrSenhaKeys = array( "1", "2", "3", "4", "5", "6", "7", "8", "9", "H", "X", "Z", "G", "B", "U", "E", "A", "T", "K", "J" );
@@ -109,7 +109,7 @@ if( $acao == "lembrar" ){
 				
 				if( mail( $rst_login["email"], $assunto, $corpo, $headers ) ){
 					$sql = "UPDATE ".$TBL." SET senha = '" . $novasenha . "' WHERE codigo = " . $rst_login["codigo"];
-					mysql_query( $sql, $cx );
+					mysqli_query( $cx ,  $sql);
 					$msg = "Uma nova senha foi gerada e enviada para o seu email";
 				} else{
 					$msg = "Ocorreu um erro durante o envio do email. Tente novamente mais tarde ou entre em contato com a CiaPixel";
@@ -117,7 +117,7 @@ if( $acao == "lembrar" ){
 	
 			}
 		}
-		mysql_free_result( $rsLogin );		
+		((mysqli_free_result( $rsLogin ) || (is_object( $rsLogin ) && (get_class( $rsLogin ) == "mysqli_result"))) ? true : false);		
 	}
 	
 }

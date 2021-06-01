@@ -340,13 +340,13 @@ $GLOBALS["i18n"]["kicked from %s by %s - reason: %s"] = "";
 $GLOBALS["i18n"]["%s quit (%s)"] = "";
 
 // line 103 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: connect error"] = "";
+$GLOBALS["i18n"]["mysql container: connect error"] = "";
 
 // line 118 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create database error '%s'"] = "";
+$GLOBALS["i18n"]["mysql container: create database error '%s'"] = "";
 
 // line 137 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create table error '%s'"] = "";
+$GLOBALS["i18n"]["mysql container: create table error '%s'"] = "";
 
 // line 47 in chat.html.tpl.php
 $GLOBALS["i18n"]["Ping"] = "";

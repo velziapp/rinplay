@@ -54,10 +54,10 @@ function fechaComentario( codigo ){
             <?php
 			// BUSCA 
 			$s = "SELECT * FROM rp_artigos ORDER BY data DESC";
-			$r = mysql_query($s, $cx);
+			$r = mysqli_query( $cx, $s);
 			$consulta = "SELECT COUNT(*) FROM rp_artigos"; 	
-			if(mysql_num_rows($r) > 0):
-				while($ln = mysql_fetch_assoc($r)){
+			if(mysqli_num_rows($r) > 0):
+				while($ln = mysqli_fetch_assoc($r)){
 					if($ln['arquivo'] == ""):
 						$link = "ver-artigo.php?codigo=".$ln['codigo'];
 						$target = "_self";

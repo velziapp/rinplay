@@ -58,10 +58,10 @@
             <div id="lista-albuns">
             <?php
 				$s = "SELECT codigo, album, capa FROM rp_albuns WHERE codigo_user = ".$codigo_user." ORDER BY codigo DESC";
-				$r = mysql_query($s, $cx);
+				$r = mysqli_query( $cx, $s);
 				$consulta = "SELECT COUNT(codigo) FROM rp_albuns WHERE codigo_user = ".$codigo_user;
-				while($ln = mysql_fetch_assoc($r)){
-					$qtdFotos = mysql_result(mysql_query("SELECT COUNT(codigo) FROM rp_albuns_fotos WHERE codigo_album = ".$ln['codigo'],$cx),0,0);
+				while($ln = mysqli_fetch_assoc($r)){
+					$qtdFotos = mysqli_result(mysqli_query($cx, "SELECT COUNT(codigo) FROM rp_albuns_fotos WHERE codigo_album = ".$ln['codigo']), 0, 0);
 					echo "<div class='lista-album-fotos'>";
 					echo "<h4>
 							<a href='albumFotos-perfil.php?codigo_album=".$ln['codigo']."&codigo_user=".$codigo_user."'>

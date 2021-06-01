@@ -11,7 +11,7 @@
 	
 	if($acao == "alterar"){
 		$sql = "UPDATE $TBL SET anuncio = '$texto'"; 
-		mysql_query($sql, $cx);
+		mysqli_query( $cx, $sql);
 		echo "<script>alert('Registro alterado com sucesso!');</script>";
 		echo"<script>opener.location.reload();</script>";
 		echo "<script>window.close();</script>";
@@ -20,8 +20,8 @@
 	
 	// TABELA
 	$SQL = "SELECT * FROM $TBL";
-	$rs = mysql_query($SQL, $cx);
-	$ln = mysql_fetch_assoc($rs);
+	$rs = mysqli_query( $cx, $SQL);
+	$ln = mysqli_fetch_assoc($rs);
 		
 ?>
 <html>

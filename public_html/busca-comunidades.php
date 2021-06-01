@@ -51,9 +51,9 @@
             <table width="100%" border="0">
             <?php
 				$s = "SELECT nome, codigo, foto FROM rp_comunidades WHERE nome like '%".$palavra."%' ORDER BY nome";
-				$r = mysql_query($s, $cx);
-				while($ln = mysql_fetch_assoc($r)){
-					$qtdMembros = mysql_result(mysql_query("SELECT COUNT(codigo) FROM rp_comunidades_membros WHERE codigo_comunidade = ".$ln['codigo'],$cx),0,0);
+				$r = mysqli_query( $cx, $s);
+				while($ln = mysqli_fetch_assoc($r)){
+					$qtdMembros = mysqli_result(mysqli_query($cx, "SELECT COUNT(codigo) FROM rp_comunidades_membros WHERE codigo_comunidade = ".$ln['codigo']), 0, 0);
 					echo "<tr><td rowspan='2' width='1' valign='top'>";
 					echo "<a href='comunidade-perfil.php?codigo_comunidade=".$ln['codigo']."'><img src='sgc/uploads/comunidades/".$ln['foto']."' width='60' ></a>";
 					echo "</td>";

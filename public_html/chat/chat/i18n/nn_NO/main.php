@@ -307,13 +307,13 @@ $GLOBALS["i18n"]["Maximum number of private chat has been reached"] = "Har nådd
 $GLOBALS["i18n"]["Send"] = "Send";
 
 // line 86 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: connect error"] = "Mysql-behaldar: tilkoplingsfeil";
+$GLOBALS["i18n"]["mysql container: connect error"] = "mysql-behaldar: tilkoplingsfeil";
 
 // line 101 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create database error '%s'"] = "Mysql-behaldar: databaseopprettingsfeil '%s'";
+$GLOBALS["i18n"]["mysql container: create database error '%s'"] = "mysql-behaldar: databaseopprettingsfeil '%s'";
 
 // line 112 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create table error '%s'"] = "Mysql-behaldar: tabellopprettingsfeil '%s'";
+$GLOBALS["i18n"]["mysql container: create table error '%s'"] = "mysql-behaldar: tabellopprettingsfeil '%s'";
 
 // line 80 in chat.js.tpl.php
 $GLOBALS["i18n"]["You are not allowed to speak to yourself"] = "Du kan ikkje tala med deg sjølv";

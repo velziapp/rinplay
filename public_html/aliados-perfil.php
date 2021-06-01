@@ -48,9 +48,9 @@
 			// BUSCA TODAS A MENSAGEM
 			//$s = "SELECT  A.codigo, U.foto, U.nome, U.codigo as codigo_user FROM rp_amigos A JOIN rp_cadastros U ON A.codigo_amigo = U.codigo WHERE A.status = 'S' AND A.codigo_amigo <> ".$_SESSION['logado']." AND A.codigo_user = ".$_SESSION['logado']." ORDER BY U.nome"; 
 			$s = "SELECT C.codigo as codigo_user,C.foto, C.nome FROM rp_cadastros C JOIN rp_amigos A ON C.codigo = A.codigo_amigo WHERE A.codigo_user =".$codigo_user." AND A.status = 'S' GROUP BY c.codigo ORDER BY nome";
-			$r = mysql_query($s, $cx); 	
-			if(mysql_num_rows($r) > 0):
-				while($ln = mysql_fetch_assoc($r)){
+			$r = mysqli_query( $cx, $s); 	
+			if(mysqli_num_rows($r) > 0):
+				while($ln = mysqli_fetch_assoc($r)){
 					$nomeUsuario = explode(" ", $ln['nome']); 
 			?>
             	<tr>

@@ -18,7 +18,7 @@
 	$TBL   = "rp_banners"; 
 	
 	if($acao == "excluir"){		
-		mysql_query("DELETE FROM " . $TBL . " WHERE codigo =". $codigo, $cx);	
+		mysqli_query( $cx, "DELETE FROM " . $TBL . " WHERE codigo =". $codigo);	
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -110,8 +110,8 @@ function AbreForm(vfnURL, vfnLargura, vfnAltura){
 	}
 
 		// obtendo os dados que serão exibidos na página principal
-		$rs = mysql_query($SQL, $cx);
-		while($rst = mysql_fetch_array($rs)){
+		$rs = mysqli_query( $cx, $SQL);
+		while($rst = mysqli_fetch_array($rs)){
 			// Definindo a CSS Class que a linha utilizará			
 			$CSS = "columnItem";
 			?>
@@ -123,14 +123,14 @@ function AbreForm(vfnURL, vfnLargura, vfnAltura){
             </tr>
 			<?php
 		}
-		mysql_free_result($rs);
+		((mysqli_free_result($rs) || (is_object($rs) && (get_class($rs) == "mysqli_result"))) ? true : false);
 		?>        
 		<tr>
 			<td colspan="10" class="columnPaginacao">
             &nbsp;
 			<?php 
 				// Pegando o total de registros e criando painel de navegação
-				list($total_registros) = mysql_fetch_array(mysql_query($consulta, $cx));
+				list($total_registros) = mysqli_fetch_array(mysqli_query( $cx, $consulta));
 				$total_paginas = $total_registros/$num_por_pagina;
 				$prev = $pagina - 1;
 				$next = $pagina + 1;

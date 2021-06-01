@@ -20,9 +20,9 @@
 		} 
 		else{
 			$query = "SELECT codigo, email, senha, nome FROM rp_cadastros WHERE email ='" . $email ."' AND senha ='" . $senha ."'";
-			$ret   = mysql_query($query , $cx);
-			if(mysql_num_rows($ret) > 0){
-				while($item=mysql_fetch_array($ret)){
+			$ret   = mysqli_query( $cx, $query );
+			if(mysqli_num_rows($ret) > 0){
+				while($item=mysqli_fetch_array($ret)){
 					if (($email == $item[1]) && ($senha == $item[2])){												
 						$_SESSION['logado'] = $item[0];
 						$_SESSION['Nome'] = $item[3];						
@@ -46,11 +46,11 @@
 		}
 		else{
 			
-			$rsEmail = mysql_query( "SELECT codigo, nome, email FROM rp_cadastros WHERE email = '$email'", $cx );
-			if( mysql_num_rows( $rsEmail ) == 0 ){
+			$rsEmail = mysqli_query( $cx ,  "SELECT codigo, nome, email FROM rp_cadastros WHERE email = '$email'");
+			if( mysqli_num_rows( $rsEmail ) == 0 ){
 				$msgLog = "ERRO: Login inv&aacute;lido";
 			} else{
-				$rst_email = mysql_fetch_assoc( $rsEmail );
+				$rst_email = mysqli_fetch_assoc( $rsEmail );
 				if( $email == $rst_email["email"] ){
 					$arrSenhaKeys = array( "1", "2", "3", "4", "5", "6", "7", "8", "9", "H", "X", "Z", "G", "B", "U", "E", "A", "T", "K", "J" );
 					$novasenha = "";
@@ -76,19 +76,19 @@
 		 
 					if($envio){
 						$sql = "UPDATE rp_cadastros SET senha = '" . $novasenha . "' WHERE codigo = " . $rst_email["codigo"];
-						mysql_query( $sql, $cx );
+						mysqli_query( $cx ,  $sql);
 						$msgLog = "Uma nova senha foi gerada e enviada para o seu email";
 					}
 					else 
 						$msgLog = "ERRO: Ocorreu um erro durante o envio do email.";
 					}
 			}
-			mysql_free_result( $rsEmail );		
+			((mysqli_free_result( $rsEmail ) || (is_object( $rsEmail ) && (get_class( $rsEmail ) == "mysqli_result"))) ? true : false);		
 		}
 		
 	}
 	// tabela
-	$pagina = mysql_fetch_assoc(mysql_query("SELECT termos FROM rp_paginas", $cx));
+	$pagina = mysqli_fetch_assoc(mysqli_query( $cx, "SELECT termos FROM rp_paginas"));
 	$texto = $pagina['termos'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

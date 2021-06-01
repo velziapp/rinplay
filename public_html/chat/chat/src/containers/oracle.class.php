@@ -109,7 +109,7 @@ class pfcContainer_Oracle extends pfcContainerInterface
       $result = mysql_query($query, $db);
       if ($result === FALSE)
       {
-        $errors[] = _pfc("Mysql container: create database error '%s'",mysql_error($db));
+        $errors[] = _pfc("mysql container: create database error '%s'",mysql_error($db));
         return $errors;
       }
       mysql_select_db($c->container_cfg_mysql_database, $db);
@@ -128,7 +128,7 @@ class pfcContainer_Oracle extends pfcContainerInterface
     $result = mysql_query($query, $db);
     if ($result === FALSE)
     {
-      $errors[] = _pfc("Mysql container: create table error '%s'",mysql_error($db));
+      $errors[] = _pfc("mysql container: create table error '%s'",mysql_error($db));
       return $errors;
     }
     return $errors;

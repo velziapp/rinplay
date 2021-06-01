@@ -312,13 +312,13 @@ $GLOBALS["i18n"]["Maximum number of private chat has been reached"] = "Было 
 $GLOBALS["i18n"]["Send"] = "Послать";
 
 // line 86 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: connect error"] = "Mysql контаейнер: ошибка соединения";
+$GLOBALS["i18n"]["mysql container: connect error"] = "mysql контаейнер: ошибка соединения";
 
 // line 101 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create database error '%s'"] = "Mysql контаейнер: ошибка создания базы данных '%s'";
+$GLOBALS["i18n"]["mysql container: create database error '%s'"] = "mysql контаейнер: ошибка создания базы данных '%s'";
 
 // line 112 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create table error '%s'"] = "Mysql контаейнер: ошибка создания таблицы '%s'";
+$GLOBALS["i18n"]["mysql container: create table error '%s'"] = "mysql контаейнер: ошибка создания таблицы '%s'";
 
 // line 80 in chat.js.tpl.php
 $GLOBALS["i18n"]["You are not allowed to speak to yourself"] = "Вы не можете разговаривать с самим собой";

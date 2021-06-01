@@ -56,7 +56,7 @@
 	
 	// TABELA
 	$SQL = "SELECT email FROM $TBL WHERE news = 'S'";
-	$rs = mysql_query($SQL, $cx);		
+	$rs = mysqli_query( $cx, $SQL);		
 ?>
 <html>
 <head>
@@ -81,7 +81,7 @@
         <td>
 			<?php 
 			$destinatarios = "";
-			while($ln = mysql_fetch_assoc($rs)){ 
+			while($ln = mysqli_fetch_assoc($rs)){ 
 				$destinatarios = $destinatarios . $ln['email'].", ";
 			}
 			$destinatarios = $destinatarios . "leandro@companhiapixel.com.br";

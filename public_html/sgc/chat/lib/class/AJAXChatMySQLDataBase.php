@@ -7,7 +7,7 @@
  * @link https://blueimp.net/ajax/
  */
 
-// Class to initialize the MySQL DataBase connection:
+// Class to initialize the mysql DataBase connection:
 class AJAXChatDataBaseMySQL {
 
 	var $_connectionID;
@@ -22,12 +22,10 @@ class AJAXChatDataBaseMySQL {
 	
 	// Method to connect to the DataBase server:
 	function connect(&$dbConnectionConfig) {
-		$this->_connectionID = @mysql_connect(
-			$dbConnectionConfig['host'],
-			$dbConnectionConfig['user'],
-			$dbConnectionConfig['pass'],
-			true
-		);
+		$this->_connectionID = @($GLOBALS["___mysqli_ston"] = mysqli_connect(
+			$dbConnectionConfig['host'], 
+			$dbConnectionConfig['user'], 
+			$dbConnectionConfig['pass']));
 		if(!$this->_connectionID) {
 			$this->_errno = null;
 			$this->_error = 'Database connection failed.';
@@ -38,9 +36,9 @@ class AJAXChatDataBaseMySQL {
 	
 	// Method to select the DataBase:
 	function select($dbName) {
-		if(!@mysql_select_db($dbName, $this->_connectionID)) {
-			$this->_errno = mysql_errno($this->_connectionID);
-			$this->_error = mysql_error($this->_connectionID);
+		if(!@mysqli_select_db( $this->_connectionID, $dbName)) {
+			$this->_errno = mysqli_errno($this->_connectionID);
+			$this->_error = mysqli_error($this->_connectionID);
 			return false;
 		}
 		$this->_dbName = $dbName;
@@ -70,7 +68,7 @@ class AJAXChatDataBaseMySQL {
 	
 	// Method to prevent SQL injections:
 	function makeSafe($value) {
-		return "'".mysql_real_escape_string($value, $this->_connectionID)."'";
+		return "'".mysqli_real_escape_string( $this->_connectionID, $value)."'";
 	}
 	
 	// Method to perform SQL queries:
@@ -85,7 +83,7 @@ class AJAXChatDataBaseMySQL {
 
 	// Method to retrieve the last inserted ID:
 	function getLastInsertedID() {
-		return mysql_insert_id($this->_connectionID);
+		return ((is_null($___mysqli_res = mysqli_insert_id($this->_connectionID))) ? false : $___mysqli_res);
 	}
 
 }

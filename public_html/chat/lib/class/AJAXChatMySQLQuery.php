@@ -7,7 +7,7 @@
  * @link https://blueimp.net/ajax/
  */
 
-// Class to perform SQL (MySQL) queries:
+// Class to perform SQL (mysql) queries:
 class AJAXChatMySQLQuery {
 
 	var $_connectionID;
@@ -21,16 +21,16 @@ class AJAXChatMySQLQuery {
 		$this->_sql = trim($sql);
 		$this->_connectionID = $connectionID;
 		if($this->_connectionID) {
-			$this->_result = mysql_query($this->_sql, $this->_connectionID);
+			$this->_result = mysqli_query( $this->_connectionID, $this->_sql);
 			if(!$this->_result) {
-				$this->_errno = mysql_errno($this->_connectionID);
-				$this->_error = mysql_error($this->_connectionID);
+				$this->_errno = mysqli_errno($this->_connectionID);
+				$this->_error = mysqli_error($this->_connectionID);
 			}
 		} else {
-			$this->_result = mysql_query($this->_sql);
+			$this->_result = mysqli_query($GLOBALS["___mysqli_ston"], $this->_sql);
 			if(!$this->_result) {
-				$this->_errno = mysql_errno();
-				$this->_error = mysql_error();
+				$this->_errno = mysqli_errno($GLOBALS["___mysqli_ston"]);
+				$this->_error = mysqli_error($GLOBALS["___mysqli_ston"]);
 			}	
 		}
 	}
@@ -58,7 +58,7 @@ class AJAXChatMySQLQuery {
 		if($this->error()) {
 			return null;
 		} else {
-			return mysql_fetch_assoc($this->_result);
+			return mysqli_fetch_assoc($this->_result);
 		}
 	}
 
@@ -67,7 +67,7 @@ class AJAXChatMySQLQuery {
 		if($this->error()) {
 			return null;
 		} else {
-			return mysql_num_rows($this->_result);
+			return mysqli_num_rows($this->_result);
 		}
 	}
 
@@ -76,13 +76,13 @@ class AJAXChatMySQLQuery {
 		if($this->error()) {
 			return null;
 		} else {
-			return mysql_affected_rows($this->_connectionID);
+			return mysqli_affected_rows($this->_connectionID);
 		}
 	}
 
 	// Frees the memory:
 	function free() {
-		@mysql_free_result($this->_result);
+		@((mysqli_free_result($this->_result) || (is_object($this->_result) && (get_class($this->_result) == "mysqli_result"))) ? true : false);
 	}
 	
 }

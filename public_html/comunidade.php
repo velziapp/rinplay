@@ -42,11 +42,11 @@
 				uploadImg($tmp, $foto, $type, 200, $pasta, 'S'); // FAZ O UPLOAD
 		
 				$SQL  = "INSERT INTO rp_comunidades (nome, descricao, codigo_categoria, foto, codigo_user) VALUES ('".$nome."','".$descricao."',".$codigo_categoria.",'".$foto."',".$_SESSION['logado'].")";
-				mysql_query($SQL, $cx);
+				mysqli_query( $cx, $SQL);
 				
-				$idnew = mysql_insert_id();
+				$idnew = ((is_null($___mysqli_res = mysqli_insert_id($GLOBALS["___mysqli_ston"]))) ? false : $___mysqli_res);
 				$sql = "INSERT INTO rp_comunidades_membros (codigo_comunidade, codigo_user) VALUES ('". $idnew ."', '". $_SESSION['logado'] ."')";
-				mysql_query($sql, $cx);
+				mysqli_query( $cx, $sql);
 			}
 			header("Location: comunidade.php");
 		break;
@@ -149,9 +149,9 @@
             <table width="100%" border="0">
             <?php
 				$s = "SELECT C.nome, C.codigo, C.foto, C.descricao FROM rp_comunidades C JOIN rp_comunidades_membros M ON C.codigo = M.codigo_comunidade WHERE M.codigo_user = ".$_SESSION['logado'] . " GROUP BY C.codigo";
-				$r = mysql_query($s, $cx);
-				while($ln = mysql_fetch_assoc($r)){
-					$qtdMembros = mysql_result(mysql_query("SELECT COUNT(codigo) FROM rp_comunidades_membros WHERE codigo_comunidade = ".$ln['codigo'],$cx),0,0);
+				$r = mysqli_query( $cx, $s);
+				while($ln = mysqli_fetch_assoc($r)){
+					$qtdMembros = mysqli_result(mysqli_query($cx, "SELECT COUNT(codigo) FROM rp_comunidades_membros WHERE codigo_comunidade = ".$ln['codigo']), 0, 0);
 					echo "<tr><td rowspan='2' width='80' align='center' valign='top'>";
 					echo "<a href='comunidade-perfil.php?codigo_comunidade=".$ln['codigo']."'><img src='sgc/uploads/comunidades/".$ln['foto']."' width='60' align='left'></a>";
 					echo "</td>";

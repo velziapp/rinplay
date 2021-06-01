@@ -16,7 +16,7 @@ function AbreForm(vfnURL, vfnLargura, vfnAltura){
 	$NomeUser = explode(" ", $_SESSION['Nome']);
 	
 	// FOTO DO USUÁRIO LOGADO
-	$fotoUser = mysql_result(mysql_query("SELECT foto FROM rp_cadastros WHERE codigo = '".$_SESSION['logado']."'", $cx),0,0);
+	$fotoUser = mysqli_result(mysqli_query( $cx, "SELECT foto FROM rp_cadastros WHERE codigo = '".$_SESSION['logado']."'"), 0, 0);
 ?>
 <div class="blocoMenu">
     <div id="div">
@@ -56,9 +56,9 @@ function AbreForm(vfnURL, vfnLargura, vfnAltura){
     <div class="alinhaMenu">
     	<?php
 		$SQL = "SELECT C.codigo as codigo_user, C.foto, C.nome FROM rp_cadastros C JOIN rp_comunidades_membros M ON C.codigo = M.codigo_user WHERE M.codigo_comunidade =".$codigo_comunidade." LIMIT 9";
-		$rs  = mysql_query($SQL, $cx);
+		$rs  = mysqli_query( $cx, $SQL);
 		$x = 1;
-		while($linha = mysql_fetch_assoc($rs)){	
+		while($linha = mysqli_fetch_assoc($rs)){	
 		?>
             <a href="verPerfil.php?codigo_user=<?php echo $linha['codigo_user']; ?>"><img src="sgc/uploads/fotos/<?php echo $linha['foto']; ?>" height="36" width="36" border="0" title="<?php echo $linha['nome']; ?>"></a>
         <?php 

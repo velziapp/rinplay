@@ -7,7 +7,7 @@
  * @link https://blueimp.net/ajax/
  */
 
-// Class to initialize the MySQL DataBase connection:
+// Class to initialize the mysql DataBase connection:
 class AJAXChatDataBaseMySQLi {
 
 	var $_connectionID;

@@ -22,17 +22,17 @@
 	
 	if($acao == "incluir"){		
 		$sql = "INSERT INTO rp_admin_permissoes( codigo_admin, codigo_modulo ) VALUES('" . $codigo_admin . "','" . $codigo_modulo . "')";
-		mysql_query($sql, $cx);		
+		mysqli_query( $cx, $sql);		
 	}
 	
 	if($acao == "excluir"){		
 		$sql = "DELETE FROM rp_admin_permissoes WHERE codigo_admin = '" . $codigo_admin . "' AND codigo_modulo = '" . $codigo_modulo . "'";
-		mysql_query($sql, $cx);		
+		mysqli_query( $cx, $sql);		
 	}
 	
 	if ($acao == "excluir_admin"){	
 		$sql = "DELETE FROM ".$TBL." WHERE codigo = '" . $codigo . "'";
-		mysql_query($sql, $cx);
+		mysqli_query( $cx, $sql);
 	}
 
 ?>
@@ -203,8 +203,8 @@ function cancelaAlteracao(){
 	}
 
 		// obtendo os dados que serão exibidos na página principal
-		$rs = mysql_query($SQL, $cx);
-		while($rst = mysql_fetch_array($rs)){
+		$rs = mysqli_query( $cx, $SQL);
+		while($rst = mysqli_fetch_array($rs)){
 			// Definindo a CSS Class que a linha utilizará			
 			$CSS = "columnItem";
 			?>
@@ -217,8 +217,8 @@ function cancelaAlteracao(){
 						$sql.= " JOIN rp_modulos_admin M"; 
 						$sql.= " ON M.codigo = P.codigo_modulo";
 						$sql.= " WHERE P.codigo_admin = $rst[0]";
-						$result = mysql_query($sql, $cx);
-						while($ln = mysql_fetch_array($result)){
+						$result = mysqli_query( $cx, $sql);
+						while($ln = mysqli_fetch_array($result)){
 							echo $ln[1]." <a href='index.php?acao=excluir&codigo_admin=$rst[0]&codigo_modulo=$ln[0]'><img src='../sys-img/bt_excluir.gif' width='10' height='10' border='0'></a>&nbsp;&nbsp;";
 						}
 					?>
@@ -229,14 +229,14 @@ function cancelaAlteracao(){
 			</tr>
 			<?php
 		}
-		mysql_free_result($rs);
+		((mysqli_free_result($rs) || (is_object($rs) && (get_class($rs) == "mysqli_result"))) ? true : false);
 		?>        
 		<tr>
 			<td colspan="10" class="columnPaginacao">
             &nbsp;
 			<?php 
 				// Pegando o total de registros e criando painel de navegação
-				list($total_registros) = mysql_fetch_array(mysql_query($consulta, $cx));
+				list($total_registros) = mysqli_fetch_array(mysqli_query( $cx, $consulta));
 				$total_paginas = $total_registros/$num_por_pagina;
 				$prev = $pagina - 1;
 				$next = $pagina + 1;

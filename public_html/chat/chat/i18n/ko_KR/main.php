@@ -338,13 +338,13 @@ $GLOBALS["i18n"]["kicked from %s by %s - reason: %s"] = "%s로 부터 %s에 의�
 $GLOBALS["i18n"]["%s quit (%s)"] = "%s님 께서 나가셨습니다. (%s)";
 
 // line 86 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: connect error"] = "Mysql 연결자 : 연결 오류";
+$GLOBALS["i18n"]["mysql container: connect error"] = "mysql 연결자 : 연결 오류";
 
 // line 101 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create database error '%s'"] = "Mysql 연결자 : DB생성 오류 '%s'";
+$GLOBALS["i18n"]["mysql container: create database error '%s'"] = "mysql 연결자 : DB생성 오류 '%s'";
 
 // line 112 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create table error '%s'"] = "Mysql 연결자 : 테이블 생성 오류 '%s'";
+$GLOBALS["i18n"]["mysql container: create table error '%s'"] = "mysql 연결자 : 테이블 생성 오류 '%s'";
 
 // line 124 in chat.js.tpl.php
 $GLOBALS["i18n"]["Chat loading ..."] = "채팅 로드중.....";

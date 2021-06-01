@@ -16,7 +16,8 @@
 	$senha = LimpaEntrada( $_POST["senha"] );
 	$acao = $_POST['acao'];
 	$msg  = "";
-	
+	$port = ini_get("mysqli.default_port");
+echo "the port ". $port;
 	 // LOGAR 
 	 if($acao == "logar"){		
 		if (($email == "") || ($senha == "")){
@@ -24,14 +25,14 @@
 		} 
 		else{
 			$query = "SELECT codigo, email, senha, nome, bemvindo FROM rp_cadastros WHERE email ='" . $email ."' AND senha ='" . $senha ."'";
-			$ret   = mysql_query($query , $cx);
-			if(mysql_num_rows($ret) > 0){
-				while($item=mysql_fetch_array($ret)){
+			$ret   = mysqli_query( $cx, $query );
+			if(mysqli_num_rows($ret) > 0){
+				while($item=mysqli_fetch_array($ret)){
 					if (($email == $item[1]) && ($senha == $item[2])){												
 						$_SESSION['logado'] = $item[0];
 						$_SESSION['Nome'] = $item[3];
 						if($item[4] == "N"):
-							mysql_query("UPDATE rp_cadastros SET bemvindo = 'S' WHERE codigo = ". $item[0] ."");			
+							mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE rp_cadastros SET bemvindo = 'S' WHERE codigo = ". $item[0] ."");			
 							echo "<script language=javascript>";
 							echo "location.href = 'seja-bem-vindo.php';";
 							echo "</script>";
@@ -57,11 +58,11 @@
 		}
 		else{
 			
-			$rsEmail = mysql_query( "SELECT codigo, nome, email FROM rp_cadastros WHERE email = '$email'", $cx );
-			if( mysql_num_rows( $rsEmail ) == 0 ){
+			$rsEmail = mysqli_query( $cx ,  "SELECT codigo, nome, email FROM rp_cadastros WHERE email = '$email'");
+			if( mysqli_num_rows( $rsEmail ) == 0 ){
 				$msgLog = "ERRO: Login inv&aacute;lido";
 			} else{
-				$rst_email = mysql_fetch_assoc( $rsEmail );
+				$rst_email = mysqli_fetch_assoc( $rsEmail );
 				if( $email == $rst_email["email"] ){
 					$arrSenhaKeys = array( "1", "2", "3", "4", "5", "6", "7", "8", "9", "H", "X", "Z", "G", "B", "U", "E", "A", "T", "K", "J" );
 					$novasenha = "";
@@ -117,14 +118,14 @@
 		 
 					if($envio){
 						$sql = "UPDATE rp_cadastros SET senha = '" . $novasenha . "' WHERE codigo = " . $rst_email["codigo"];
-						mysql_query( $sql, $cx );
+						mysqli_query( $cx ,  $sql);
 						$msgLog = "Uma nova senha foi gerada e enviada para o seu email";
 					}
 					else 
 						$msgLog = "ERRO: Ocorreu um erro durante o envio do email.";
 					}
 			}
-			mysql_free_result( $rsEmail );		
+			((mysqli_free_result( $rsEmail ) || (is_object( $rsEmail ) && (get_class( $rsEmail ) == "mysqli_result"))) ? true : false);		
 		}
 		
 	}
@@ -145,17 +146,17 @@
 		
 		if($senha == $confirmarsenha){
 			$verifica = "SELECT email FROM rp_cadastros WHERE email = '$email'";
-			$ret = mysql_query($verifica, $cx);
-			if(mysql_num_rows($ret) == 0){
+			$ret = mysqli_query( $cx, $verifica);
+			if(mysqli_num_rows($ret) == 0){
 				$SQL = "INSERT INTO rp_cadastros(nome, email, nascimento, senha, sexo, codigo_anel, news)"; 
 				$SQL.=" VALUES('$nome', '$email', '$nascimento', '$senha', '$sexo', $anel, '$news')";
-				mysql_query($SQL, $cx);
-				$old_id = mysql_insert_id();
+				mysqli_query( $cx, $SQL);
+				$old_id = ((is_null($___mysqli_res = mysqli_insert_id($GLOBALS["___mysqli_ston"]))) ? false : $___mysqli_res);
 				// INCLUI AMIGO
 				$SQL = "INSERT INTO rp_amigos(codigo_user, codigo_amigo, status) VALUES(". $old_id .", 26, 'S')";
-				mysql_query($SQL, $cx);
+				mysqli_query( $cx, $SQL);
 				$SQL = "INSERT INTO rp_amigos(codigo_user, codigo_amigo, status) VALUES(26, ". $old_id .", 'S')";
-				mysql_query($SQL, $cx);
+				mysqli_query( $cx, $SQL);
 				$msg = "Cadastro efetuado com sucesso! Você já pode efetuar o login.";
 			}
 			else

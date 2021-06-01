@@ -40,7 +40,7 @@
 			
 		if(empty($name)){	
 			$UPDATE = "UPDATE rp_cadastros SET nome = '".$nome . " " . $sobrenome ."', nascimento = '".$nascimento."', senha = '".$senha."', news = '".$news."', codigo_anel = ".$anel." WHERE codigo = ".$_SESSION['logado'];
-			mysql_query($UPDATE, $cx);
+			mysqli_query( $cx, $UPDATE);
 			header("location: dados.php");
 			//$msg = "Cadastro efetuado com sucesso! Você já pode efetuar o login.";
 		}
@@ -60,7 +60,7 @@
 				uploadImg($tmp, $foto, $type, 400, $pasta, 'S'); // FAZ O UPLOAD
 		
 				$UPDATE = "UPDATE rp_cadastros SET nome = '".$nome. " " . $sobrenome ."', nascimento = '".$nascimento."', senha = '".$senha."', codigo_anel = ".$anel.", foto ='".$foto."' WHERE codigo = ".$_SESSION['logado'];
-				mysql_query($UPDATE, $cx);
+				mysqli_query( $cx, $UPDATE);
 				header("location: dados.php");
 				//$msg = "Cadastro efetuado com sucesso! Você já pode efetuar o login.";
 			}
@@ -68,8 +68,8 @@
 	}
 	// BUSCANDO OS DADOS DO USUÁRIO LOGADO
 	$SQL = "SELECT * FROM rp_cadastros WHERE codigo = ".$_SESSION['logado'];
-	$rs  = mysql_query($SQL, $cx);
-	$dados = mysql_fetch_assoc($rs);
+	$rs  = mysqli_query( $cx, $SQL);
+	$dados = mysqli_fetch_assoc($rs);
 	$nome = explode(' ', $dados['nome']);
 	for($i = 1; $i < (count($nome)); $i++){
 		$sobrenome .= $nome[$i] . " ";

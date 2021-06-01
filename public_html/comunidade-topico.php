@@ -16,14 +16,14 @@
 	
 	// SELECIONA NOME DA COMUNIDADE
 	$sql = "SELECT nome FROM rp_comunidades WHERE codigo=".$codigo_comunidade;
-	$rsComu = mysql_query($sql, $cx);
-	$lnComu = mysql_fetch_assoc($rsComu);
+	$rsComu = mysqli_query( $cx, $sql);
+	$lnComu = mysqli_fetch_assoc($rsComu);
 	$nome = $lnComu['nome'];
 
 	// VERIFICA SE O USUÁRIO LOGADO PARTICIPA DA COMUNIDADE
 	$membro = "SELECT COUNT(codigo) as qtd FROM rp_comunidades_membros WHERE codigo_user =".$_SESSION['logado']." AND codigo_comunidade=".$codigo_comunidade;
-	$result = mysql_query($membro, $cx);
-	$l = mysql_fetch_assoc($result);
+	$result = mysqli_query( $cx, $membro);
+	$l = mysqli_fetch_assoc($result);
 	if($l['qtd'] == 1)
 		$fazparte = true;
 	else
@@ -32,8 +32,8 @@
 	
 	// VERIFICA SE O USUÁRIO LOGADO É O DONO DA COMUNIDADE
 	$dono = "SELECT COUNT(codigo) as qtd FROM rp_comunidades WHERE codigo_user =".$_SESSION['logado']." AND codigo=".$codigo_comunidade;
-	$result = mysql_query($dono, $cx);
-	$l = mysql_fetch_assoc($result);
+	$result = mysqli_query( $cx, $dono);
+	$l = mysqli_fetch_assoc($result);
 	if($l['qtd'] == 1)
 		$edono = true;
 	else
@@ -93,11 +93,11 @@
                         <?php
                         $f  = "SELECT codigo, titulo FROM rp_forum WHERE codigo_comunidade = ".$codigo_comunidade." ORDER BY codigo DESC";
                         $consulta = "SELECT COUNT(codigo) FROM rp_forum WHERE codigo_comunidade = ".$codigo_comunidade;
-                        $rf = mysql_query($f, $cx);
-                        if(mysql_num_rows($rf) > 0){
+                        $rf = mysqli_query( $cx, $f);
+                        if(mysqli_num_rows($rf) > 0){
                             $i = 1;
-                            while($dados = mysql_fetch_assoc($rf)){
-                            $qtdPosts = mysql_result(mysql_query("SELECT COUNT(codigo) FROM rp_forum_posts WHERE codigo_forum = ".$dados['codigo'],$cx),0,0);
+                            while($dados = mysqli_fetch_assoc($rf)){
+                            $qtdPosts = mysqli_result(mysqli_query($cx, "SELECT COUNT(codigo) FROM rp_forum_posts WHERE codigo_forum = ".$dados['codigo']), 0, 0);
                         	?>
                                 <tr>
                                     <td bgcolor="#FFFFFF">

@@ -21,7 +21,7 @@ class AJAXChatDataBase {
 				$this->_db = new AJAXChatDatabaseMySQL($dbConnectionConfig);
 				break;
 			default:
-				// Use MySQLi if available, else MySQL (and check the type of a given database connection object):
+				// Use MySQLi if available, else mysql (and check the type of a given database connection object):
 				if(function_exists('mysqli_connect') && (!$dbConnectionConfig['link'] || is_object($dbConnectionConfig['link']))) {
 					$this->_db = new AJAXChatDatabaseMySQLi($dbConnectionConfig);
 				} else {

@@ -342,13 +342,13 @@ $GLOBALS["i18n"]["kicked from %s by %s - reason: %s"] = "chutado de %s por %s - 
 $GLOBALS["i18n"]["%s quit (%s)"] = "%s saiu (%s)";
 
 // line 86 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: connect error"] = "MySQL: Conexão falhou";
+$GLOBALS["i18n"]["mysql container: connect error"] = "mysql: Conexão falhou";
 
 // line 101 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create database error '%s'"] = "MySQL: Falha ao criar database '%s'";
+$GLOBALS["i18n"]["mysql container: create database error '%s'"] = "mysql: Falha ao criar database '%s'";
 
 // line 112 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create table error '%s'"] = "MySQL: Falha ao criar tabela '%s'";
+$GLOBALS["i18n"]["mysql container: create table error '%s'"] = "mysql: Falha ao criar tabela '%s'";
 // line 124 in chat.js.tpl.php
 $GLOBALS["i18n"]["Chat loading ..."] = "Iniciando Chat...";
 

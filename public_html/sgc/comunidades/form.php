@@ -13,7 +13,7 @@
 	if($acao == "inserir"){
 	
 		$sql = "INSERT INTO ".$TBL."(descricao) VALUES ('" . $descricao . "')";
-		mysql_query($sql, $cx);
+		mysqli_query( $cx, $sql);
 		echo "<script>alert('Registro inserido com sucesso!');</script>";
 		echo"<script>opener.location.reload();</script>";
 		echo "<script>window.close();</script>";
@@ -45,8 +45,8 @@
 <?php 
 	if($codigo > 0){
 		$SQL = "SELECT * FROM ".$TBL." WHERE codigo =".$codigo;
-		$rs = mysql_query($SQL, $cx);
-		$ln = mysql_fetch_assoc($rs);
+		$rs = mysqli_query( $cx, $SQL);
+		$ln = mysqli_fetch_assoc($rs);
 	}
 ?>
 <form method="post" action="form.php?codigo=<?php echo $codigo; ?>" name="frm_noticias" enctype="multipart/form-data">

@@ -22,7 +22,7 @@
 	
 	// TOTAL DE MENSAGENS
 	$sql = "SELECT COUNT(*) AS total FROM rp_cadastros WHERE nome LIKE '%".$palavra."%'";
-	$lnTotal = mysql_fetch_assoc(mysql_query($sql, $cx));
+	$lnTotal = mysqli_fetch_assoc(mysqli_query( $cx, $sql));
 	$totalRegistros = $lnTotal['total'];
 	
 	// CONTINUA PAGINAÇÃO
@@ -30,7 +30,7 @@
 	
 	// TOTAL DE MENSAGENS
 	$sql = "SELECT COUNT(*) AS total FROM rp_comunidades WHERE nome LIKE '%".$palavra."%'";
-	$lnTotalComu = mysql_fetch_assoc(mysql_query($sql, $cx));
+	$lnTotalComu = mysqli_fetch_assoc(mysqli_query( $cx, $sql));
 	$totalRegistrosComu = $lnTotalComu['total'];
 	
 	// CONTINUA PAGINAÇÃO
@@ -117,9 +117,9 @@ $(document).ready(function(){
                 // BUSCA NOS USUÁRIOS
                 $s = "SELECT * FROM rp_cadastros WHERE nome LIKE '%".$palavra."%'"; 
                 $s.= " ORDER BY codigo DESC LIMIT $inicio, $quantidade";
-                $r = mysql_query($s, $cx);
-                if(mysql_num_rows($r) > 0){
-                    while($ln = mysql_fetch_assoc($r)){
+                $r = mysqli_query( $cx, $s);
+                if(mysqli_num_rows($r) > 0){
+                    while($ln = mysqli_fetch_assoc($r)){
                         if($ln['foto'] == ""):
                             $fotoP = "semfoto.gif";
                         else:
@@ -152,9 +152,9 @@ $(document).ready(function(){
                 // BUSCA NOS COMUNIDADE
                 $s = "SELECT * FROM rp_comunidades WHERE nome LIKE '%".$palavra."%' "; 
                 $s.= " ORDER BY codigo DESC LIMIT $inicio, $quantidade";
-                $r = mysql_query($s, $cx);
-                if(mysql_num_rows($r) > 0){
-                    while($ln = mysql_fetch_assoc($r)){
+                $r = mysqli_query( $cx, $s);
+                if(mysqli_num_rows($r) > 0){
+                    while($ln = mysqli_fetch_assoc($r)){
                         if($ln['foto'] == ""):
                             $fotoP = "semfoto.gif";
                         else:

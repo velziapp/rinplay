@@ -21,7 +21,7 @@
  */
 
 /**
- * pfcContainerInterface is an interface implemented by pfcContainer and each pfcContainer concrete isntances (File,Mysql...)
+ * pfcContainerInterface is an interface implemented by pfcContainer and each pfcContainer concrete isntances (File,mysql...)
  *
  * @author Stephane Gully <stephane.gully@gmail.com>
  * @abstract

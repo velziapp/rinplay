@@ -309,13 +309,13 @@ $GLOBALS["i18n"]["Maximum number of private chat has been reached"] = "A privát
 $GLOBALS["i18n"]["Send"] = "Küldés";
 
 // line 86 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: connect error"] = "Mysql tároló: kapcsolódási hiba";
+$GLOBALS["i18n"]["mysql container: connect error"] = "mysql tároló: kapcsolódási hiba";
 
 // line 101 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create database error '%s'"] = "Mysql tároló: adatbázis létrehozási hiba - '%s'";
+$GLOBALS["i18n"]["mysql container: create database error '%s'"] = "mysql tároló: adatbázis létrehozási hiba - '%s'";
 
 // line 112 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create table error '%s'"] = "Mysql tároló: tábla létrehozási hiba - '%s'";
+$GLOBALS["i18n"]["mysql container: create table error '%s'"] = "mysql tároló: tábla létrehozási hiba - '%s'";
 
 // line 80 in chat.js.tpl.php
 $GLOBALS["i18n"]["You are not allowed to speak to yourself"] = "Nem beszélgethetsz saját magaddal :-)";

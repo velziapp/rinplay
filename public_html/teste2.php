@@ -38,7 +38,7 @@ function fechaComentario( codigo ){
             <?php
 			// BUSCA 
 			$s = "SELECT * FROM rp_tutoriais ORDER BY data DESC";
-			$r = mysql_query($s, $cx);
+			$r = mysqli_query( $cx, $s);
 			$consulta = "SELECT COUNT(*) FROM rp_tutoriais"; 	
 			if(mysqli_num_rows($r) > 0):
 				while($ln = mysqli_fetch_assoc($r)){

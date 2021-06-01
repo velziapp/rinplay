@@ -17,7 +17,7 @@
 		case "criarAlbum":
 			$album = LimpaEntrada($_REQUEST['album']);
 			$SQL  = "INSERT INTO rp_albuns (album, codigo_user) VALUES ('".$album."',".$_SESSION['logado'].")";
-			mysql_query($SQL, $cx);
+			mysqli_query( $cx, $SQL);
 			header("Location: album.php");
 		break;
 		
@@ -35,7 +35,7 @@
 		
 			if(empty($name)){	
 				$UPDATE = "UPDATE rp_albuns SET album = '".$novoNome."' WHERE codigo = ".$codigo_album;
-				mysql_query($UPDATE, $cx);		
+				mysqli_query( $cx, $UPDATE);		
 				header("Location: album.php");	
 			}
 			else{	
@@ -54,7 +54,7 @@
 					uploadImg($tmp, $foto, $type, 400, $pasta, 'S'); // FAZ O UPLOAD
 			
 					$UPDATE = "UPDATE rp_albuns SET album = '".$novoNome."', capa ='".$foto."' WHERE codigo = ".$codigo_album;
-					mysql_query($UPDATE, $cx);		
+					mysqli_query( $cx, $UPDATE);		
 					header("Location: album.php");		
 				}
 			}
@@ -63,9 +63,9 @@
 		case "excluirAlbum":
 			$codigo_album = LimpaEntrada($_REQUEST['codigo_album']);
 			$SQL  = "DELETE FROM rp_albuns WHERE codigo_user =".$_SESSION['logado']." AND codigo = ".$codigo_album;
-			mysql_query($SQL, $cx);
+			mysqli_query( $cx, $SQL);
 			$SQL  = "DELETE FROM rp_albuns_fotos WHERE codigo_album =".$codigo_album;
-			mysql_query($SQL, $cx);
+			mysqli_query( $cx, $SQL);
 			header("Location: album.php");
 		break;
 	}
@@ -165,10 +165,10 @@
             <div id="lista-albuns">
             <?php
 				$s = "SELECT codigo, album, capa FROM rp_albuns WHERE codigo_user = ".$_SESSION['logado']." ORDER BY codigo DESC";
-				$r = mysql_query($s, $cx);
+				$r = mysqli_query( $cx, $s);
 				$consulta = "SELECT COUNT(codigo) FROM rp_albuns WHERE codigo_user = ".$_SESSION['logado'];
-				while($ln = mysql_fetch_assoc($r)){
-					$qtdFotos = mysql_result(mysql_query("SELECT COUNT(codigo) FROM rp_albuns_fotos WHERE codigo_album = ".$ln['codigo'],$cx),0,0);
+				while($ln = mysqli_fetch_assoc($r)){
+					$qtdFotos = mysqli_result(mysqli_query($cx, "SELECT COUNT(codigo) FROM rp_albuns_fotos WHERE codigo_album = ".$ln['codigo']), 0, 0);
 					echo "<div class='lista-album-fotos'>";
 					echo "<h4>
 							<a href='albumFotos.php?codigo_album=".$ln['codigo']."&album=".$ln['album']."'>

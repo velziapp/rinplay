@@ -252,13 +252,13 @@ $GLOBALS["i18n"]["%s has been unbanished"] = "";
 $GLOBALS["i18n"]["%s users have been unbanished"] = "";
 
 // line 86 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: connect error"] = "";
+$GLOBALS["i18n"]["mysql container: connect error"] = "";
 
 // line 101 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create database error '%s'"] = "";
+$GLOBALS["i18n"]["mysql container: create database error '%s'"] = "";
 
 // line 112 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create table error '%s'"] = "";
+$GLOBALS["i18n"]["mysql container: create table error '%s'"] = "";
 
 // line 53 in auth.class.php
 $GLOBALS["i18n"]["You are not allowed to run '%s' command"] = "";

@@ -16,8 +16,8 @@
 	
 	// VERIFICA SE O USUÁRIO LOGADO PARTICIPA DA COMUNIDADE
 	$membro = "SELECT COUNT(codigo) as qtd FROM rp_comunidades_membros WHERE codigo_user =".$_SESSION['logado']." AND codigo_comunidade=".$codigo_comunidade;
-	$result = mysql_query($membro, $cx);
-	$l = mysql_fetch_assoc($result);
+	$result = mysqli_query( $cx, $membro);
+	$l = mysqli_fetch_assoc($result);
 	if($l['qtd'] == 1):
 		$fazparte = true;
 	else:
@@ -26,8 +26,8 @@
 	
 	// VERIFICA SE O USUÁRIO LOGADO É O DONO DA COMUNIDADE
 	$dono = "SELECT COUNT(codigo) as qtd FROM rp_comunidades WHERE codigo_user =".$_SESSION['logado']." AND codigo=".$codigo_comunidade;
-	$result = mysql_query($dono, $cx);
-	$l = mysql_fetch_assoc($result);
+	$result = mysqli_query( $cx, $dono);
+	$l = mysqli_fetch_assoc($result);
 	if($l['qtd'] == 1)
 		$edono = true;
 	else
@@ -35,27 +35,27 @@
 		
 	// SELECIONA NOME DA COMUNIDADE
 	$sql = "SELECT nome FROM rp_comunidades WHERE codigo=".$codigo_comunidade;
-	$rsComu = mysql_query($sql, $cx);
-	$lnComu = mysql_fetch_assoc($rsComu);
+	$rsComu = mysqli_query( $cx, $sql);
+	$lnComu = mysqli_fetch_assoc($rsComu);
 	$nome = $lnComu['nome'];
 	
 	switch($acao){
 		case "criarTopico":
 			$titulo = LimpaEntrada($_REQUEST['titulo']);
 			$SQL = "INSERT INTO rp_forum(codigo_comunidade, titulo, codigo_user) VALUES(".$codigo_comunidade.", '".$titulo."' ,".$_SESSION['logado'].")";
-			mysql_query($SQL, $cx);
+			mysqli_query( $cx, $SQL);
 			header("location: comunidade-perfil.php?codigo_comunidade=".$codigo_comunidade);		
 		break;
 		
 		case "participar":
 			$PARTICIPAR = "INSERT INTO rp_comunidades_membros(codigo_comunidade, codigo_user) VALUES(".$codigo_comunidade.",".$_SESSION['logado'].")";
-			mysql_query($PARTICIPAR, $cx);
+			mysqli_query( $cx, $PARTICIPAR);
 			header("location: comunidade-perfil.php?codigo_comunidade=".$codigo_comunidade);		
 		break;
 		
 		case "deixar":
 			$DEIXAR = "DELETE FROM rp_comunidades_membros WHERE codigo_comunidade =".$codigo_comunidade." AND codigo_user =".$_SESSION['logado'];
-			mysql_query($DEIXAR, $cx);
+			mysqli_query( $cx, $DEIXAR);
 			header("location: comunidade-perfil.php?codigo_comunidade=".$codigo_comunidade);		
 		break;	
 		
@@ -75,7 +75,7 @@
 		
 			if(empty($name)){	
 				$UPDATE = "UPDATE rp_comunidades SET nome = '".$nome."', codigo_categoria = ".$codigo_categoria.", descricao = '".$descricao."' WHERE codigo = ".$codigo_comunidade;
-				mysql_query($UPDATE, $cx);			
+				mysqli_query( $cx, $UPDATE);			
 				header("location: comunidade-perfil.php?codigo_comunidade=".$codigo_comunidade);	
 			}
 			else{	
@@ -94,7 +94,7 @@
 					uploadImg($tmp, $foto, $type, 480, $pasta, 'S'); // FAZ O UPLOAD
 			
 					$UPDATE = "UPDATE rp_comunidades SET nome = '".$nome."', codigo_categoria = ".$codigo_categoria.", descricao = '".$descricao."', foto = '".$foto."' WHERE codigo = ".$codigo_comunidade;
-					mysql_query($UPDATE, $cx);		
+					mysqli_query( $cx, $UPDATE);		
 					header("location: comunidade-perfil.php?codigo_comunidade=".$codigo_comunidade);			
 				}
 			}
@@ -141,9 +141,9 @@
             <div id="exibe">                    
                 <?php
                     $s = "SELECT C.*, U.nome as dono FROM rp_comunidades C JOIN rp_cadastros U ON C.codigo_user = U.codigo WHERE C.codigo = ".$codigo_comunidade;
-                    $r = mysql_query($s, $cx);
-                    while($ln = mysql_fetch_assoc($r)){
-                        $qtdMembros = mysql_result(mysql_query("SELECT COUNT(codigo) FROM rp_comunidades_membros WHERE codigo_comunidade = ".$ln['codigo'],$cx),0,0);
+                    $r = mysqli_query( $cx, $s);
+                    while($ln = mysqli_fetch_assoc($r)){
+                        $qtdMembros = mysqli_result(mysqli_query($cx, "SELECT COUNT(codigo) FROM rp_comunidades_membros WHERE codigo_comunidade = ".$ln['codigo']), 0, 0);
                         ?>
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
                         	<tr>
@@ -194,11 +194,11 @@
                         </tr>
                         <?php
                         $f  = "SELECT codigo, titulo FROM rp_forum WHERE codigo_comunidade = ".$codigo_comunidade." ORDER BY codigo DESC LIMIT 6";
-                        $rf = mysql_query($f, $cx);
-                        if(mysql_num_rows($rf) > 0){
+                        $rf = mysqli_query( $cx, $f);
+                        if(mysqli_num_rows($rf) > 0){
                             $i = 1;
-                            while($dados = mysql_fetch_assoc($rf)){
-                            $qtdPosts = mysql_result(mysql_query("SELECT COUNT(codigo) FROM rp_forum_posts WHERE codigo_forum = ".$dados['codigo'],$cx),0,0);
+                            while($dados = mysqli_fetch_assoc($rf)){
+                            $qtdPosts = mysqli_result(mysqli_query($cx, "SELECT COUNT(codigo) FROM rp_forum_posts WHERE codigo_forum = ".$dados['codigo']), 0, 0);
                         	?>
                                 <tr>
                                     <td bgcolor="#FFFFFF">
@@ -231,8 +231,8 @@
             <div id="altera" style="display:none;">
                 <?php
                     $qry = "SELECT * FROM rp_comunidades WHERE codigo =".$codigo_comunidade;
-                    $rt  = mysql_query($qry, $cx);
-                    $ln  = mysql_fetch_assoc($rt);
+                    $rt  = mysqli_query( $cx, $qry);
+                    $ln  = mysqli_fetch_assoc($rt);
                 ?>
                 <table style=" height:70px;" border="0"> 
                     <form method="post" action="comunidade-perfil.php" enctype="multipart/form-data">

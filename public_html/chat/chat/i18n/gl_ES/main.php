@@ -306,13 +306,13 @@ $GLOBALS["i18n"]["Maximum number of private chat has been reached"] = "Alcanzado
 $GLOBALS["i18n"]["Send"] = "Enviar";
 
 // line 86 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: connect error"] = "Colector MySQL: error de conexión";
+$GLOBALS["i18n"]["mysql container: connect error"] = "Colector mysql: error de conexión";
 
 // line 101 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create database error '%s'"] = "Colector MySQL: '%s' error na creación da base de datos";
+$GLOBALS["i18n"]["mysql container: create database error '%s'"] = "Colector mysql: '%s' error na creación da base de datos";
 
 // line 112 in mysql.class.php
-$GLOBALS["i18n"]["Mysql container: create table error '%s'"] = "Colector MySQL: '%s' error na creación da tabla(s)";
+$GLOBALS["i18n"]["mysql container: create table error '%s'"] = "Colector mysql: '%s' error na creación da tabla(s)";
 
 // line 80 in chat.js.tpl.php
 $GLOBALS["i18n"]["You are not allowed to speak to yourself"] = "Non está permitido falarse a un mesmo";
